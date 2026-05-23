@@ -399,7 +399,22 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 180px;
+      cursor: pointer;
+      position: relative;
+      transition: box-shadow .2s, transform .2s;
     }
+    .p-card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,.09);
+      transform: translateY(-2px);
+    }
+    .p-card-arrow {
+      position: absolute; top: 20px; right: 20px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(0,0,0,.07);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .15s;
+    }
+    .p-card:hover .p-card-arrow { opacity: 1; }
     .p-card-span2-col { grid-column: span 2; }
     .p-card-span2-row { grid-row: span 2; }
     .p-card h3 {
@@ -463,46 +478,46 @@
         <div class="dd-content active">
           <div style="flex:1;">
             <div class="dd-col-title">HR Agents</div>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#sourcing-agent">
               <div class="dd-icon">SA</div>
-              <div><div class="dd-item-title">Sourcing Agent</div><div class="dd-item-desc">Finds and engages candidates across LinkedIn, job boards and databases.</div></div>
+              <div><div class="dd-item-title">Talent Sourcing Agent</div><div class="dd-item-desc">Searches every platform, builds a shortlist and sends personalised outreach automatically.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#screening-phone">
               <div class="dd-icon">SP</div>
               <div><div class="dd-item-title">Screening Phone Agent</div><div class="dd-item-desc">Automated pre-qualification calls with structured summaries for recruiters.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#online-meeting">
               <div class="dd-icon">OM</div>
               <div><div class="dd-item-title">Online Meeting Agent</div><div class="dd-item-desc">AI notes, key questions and follow-ups after every online interview.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#candidate-expertise">
               <div class="dd-icon">CE</div>
               <div><div class="dd-item-title">Candidate Expertise Screening</div><div class="dd-item-desc">Deep assessment of candidate skills and domain knowledge before the interview stage.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#critical-thinking">
               <div class="dd-icon">CT</div>
               <div><div class="dd-item-title">Critical Thinking Assessment</div><div class="dd-item-desc">Evaluates problem-solving ability and analytical reasoning through AI-driven scenarios.</div></div>
             </a>
           </div>
           <div style="flex:1;">
             <div class="dd-col-title">HR Operations</div>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#database-reactivation">
               <div class="dd-icon">RD</div>
               <div><div class="dd-item-title">Database Reactivation</div><div class="dd-item-desc">Re-engages your existing candidate database with personalised AI outreach.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#ai-resume">
               <div class="dd-icon">AR</div>
               <div><div class="dd-item-title">AI Resume Screening</div><div class="dd-item-desc">Analyses CVs, scores fit and prioritises candidates automatically.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#background-verification">
               <div class="dd-icon">BV</div>
               <div><div class="dd-item-title">Background Verification</div><div class="dd-item-desc">Automated verification of candidate references, credentials and employment history.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#candidate-infoline">
               <div class="dd-icon">CI</div>
               <div><div class="dd-item-title">Candidate Infoline 24/7</div><div class="dd-item-desc">AI-powered hotline that answers candidate questions around the clock.</div></div>
             </a>
-            <a class="dd-item" href="#">
+            <a class="dd-item" href="hr-solution.html#company-process">
               <div class="dd-icon">CP</div>
               <div><div class="dd-item-title">Company Process Analysis</div><div class="dd-item-desc">Audits your HR workflows and maps opportunities for AI automation.</div></div>
             </a>
@@ -569,7 +584,7 @@
         <circle cx="14" cy="14" r="13.5" fill="none" stroke="#e2e8f0" stroke-width="1"/>
       </svg>
     </button>
-    <a href="https://auth.instaview.sk/u/login?state=hKFo2SAyejFVMTVfRXM2ZDJtcjJnUjFLSV9hSDVmdXFJNEZUdKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDdVU2tvRGJpdTRNZlhTWkQ4S2V1Y3BXRUFBT3MtM192o2NpZNkgYjdEVm5EblNnYks1dEdSR3AwOWFhd1Bvc1FUemJoM1c" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:100px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,0.75);text-decoration:none;border:1.5px solid transparent;transition:color .15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Log in</a>
+    <a href="https://auth.instaview.sk/u/login?state=hKFo2SAyejFVMTVfRXM2ZDJtcjJnUjFLSV9hSDVmdXFJNEZUdKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDdVU2tvRGJpdTRNZlhTWkQ4S2V1Y3BXRUFBT3MtM192o2NpZNkgYjdEVm5EblNnYks1dEdSR3AwOWFhd1Bvc1FUemJoM1c" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:100px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,0.75);text-decoration:none;border:1.5px solid rgba(255,255,255,0.35);transition:color .15s, border-color .15s;" onmouseover="this.style.color='#fff';this.style.borderColor='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)';this.style.borderColor='rgba(255,255,255,0.35)'">Log in</a>
     <button class="nav-cta">
       Contact Sales
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -610,10 +625,11 @@
     <a href="#contact" class="btn">Try app</a>
   </div>
 
-  <div class="p-grid">
+  <div class="p-grid" id="p-grid">
 
-    <!-- Screening Phone Agent — normal -->
-    <div class="p-card">
+    <!-- Screening Phone Agent -->
+    <div class="p-card" onclick="openProduct('screening-phone')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
         <h3>Screening Phone Agent</h3>
         <p>Interview every applicant within minutes without a single recruiter on the phone.</p>
@@ -624,8 +640,9 @@
       </div>
     </div>
 
-    <!-- Online Meeting Agent — normal -->
-    <div class="p-card">
+    <!-- Online Meeting Agent -->
+    <div class="p-card" onclick="openProduct('online-meeting')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
         <h3>Online Meeting Agent</h3>
         <p>Conduct structured video interviews automatically and get a full report instantly.</p>
@@ -636,10 +653,11 @@
       </div>
     </div>
 
-    <!-- Sourcing Agent — spans 2 rows -->
-    <div class="p-card p-card-span2-row">
+    <!-- Talent Sourcing Agent — spans 2 rows -->
+    <div class="p-card p-card-span2-row" onclick="openProduct('sourcing-agent')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
-        <h3>Sourcing Agent</h3>
+        <h3>Talent Sourcing Agent</h3>
         <p>Find the right candidates across LinkedIn, Github, Xing and your database in one search.</p>
       </div>
       <div class="p-stat" style="margin-top:auto; padding-top:32px;">
@@ -649,7 +667,8 @@
     </div>
 
     <!-- AI Resume Screening — spans 2 cols -->
-    <div class="p-card p-card-span2-col">
+    <div class="p-card p-card-span2-col" onclick="openProduct('ai-resume')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
         <h3>AI Resume Screening</h3>
         <p>Score and rank every CV automatically so you only read the ones that matter.</p>
@@ -660,11 +679,12 @@
       </div>
     </div>
 
-    <!-- Launched Test Screening -->
-    <div class="p-card">
+    <!-- Candidate Expertise Screening -->
+    <div class="p-card" onclick="openProduct('candidate-expertise')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
-        <h3>Launched Test Screening</h3>
-        <p>Send skills tests to every candidate and get results without lifting a finger.</p>
+        <h3>Candidate Expertise Screening</h3>
+        <p>Test coding, language, soft and hard skills in depth — AI sets the criteria and evaluates every candidate automatically.</p>
       </div>
       <div class="p-stat">
         <span class="p-stat-num">70%</span>
@@ -673,22 +693,24 @@
     </div>
 
     <!-- Reactivation Database -->
-    <div class="p-card">
+    <div class="p-card" onclick="openProduct('database-reactivation')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
-        <h3>Reactivation Database</h3>
-        <p>Turn your old candidate database into a live pipeline with AI-powered outreach.</p>
+        <h3>Database Reactivation</h3>
+        <p>AI calls through your entire candidate database, qualifies who's relevant for your current opening, and delivers a live shortlist.</p>
       </div>
       <div class="p-stat">
-        <span class="p-stat-num">40%</span>
-        <span class="p-stat-label">of past candidates re-engaged and ready to interview</span>
+        <span class="p-stat-num">10×</span>
+        <span class="p-stat-label">faster to qualify your entire database than manual outreach</span>
       </div>
     </div>
 
     <!-- Background Checks -->
-    <div class="p-card">
+    <div class="p-card" onclick="openProduct('background-verification')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
-        <h3>Background Checks</h3>
-        <p>Verify every hire with automated background checks in days, not weeks.</p>
+        <h3>Background Verification</h3>
+        <p>AI calls previous employers directly, verifies work history, and confirms every claim a candidate makes — fully automated.</p>
       </div>
       <div class="p-stat">
         <span class="p-stat-num">5×</span>
@@ -697,7 +719,8 @@
     </div>
 
     <!-- Company Process Analysis — spans 2 cols -->
-    <div class="p-card p-card-span2-col">
+    <div class="p-card p-card-span2-col" onclick="openProduct('company-process')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
         <h3>Company Process Analysis</h3>
         <p>Map and optimise your internal HR workflows with AI before you start hiring.</p>
@@ -709,7 +732,8 @@
     </div>
 
     <!-- Candidate Infoline 24/7 -->
-    <div class="p-card">
+    <div class="p-card" onclick="openProduct('candidate-infoline')">
+      <div class="p-card-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div>
         <h3>Candidate Infoline 24/7</h3>
         <p>Answer every candidate question instantly 24 hours a day, 7 days a week.</p>
@@ -721,6 +745,8 @@
     </div>
 
   </div>
+
+  <div class="p-detail" id="p-detail" style="display:none;"></div>
 </section>
 
 <!-- ═══ HR STATS ══════════════════════════════════════════════════ -->
@@ -2006,7 +2032,427 @@
   .footer-bottom-links a:hover { color: #fff; }
 </style>
 
+<style>
+  /* ── PRODUCT DETAIL PANEL ─────────────────────────────────── */
+  @keyframes p-detail-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .p-detail { animation: p-detail-in .22s ease; }
+  .p-detail-back {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: none; border: none;
+    color: #64748b; font-size: 13.5px; font-weight: 600;
+    cursor: pointer; padding: 0; margin-bottom: 32px;
+    font-family: inherit; transition: color .15s;
+  }
+  .p-detail-back:hover { color: #0f172a; }
+  .p-detail-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .p-detail-tag {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: #6366f1;
+    background: #eef2ff; border: 1px solid #c7d2fe;
+    border-radius: 100px; padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+  .p-detail-title {
+    font-size: 36px; font-weight: 800; color: #0f172a;
+    line-height: 1.1; letter-spacing: -.5px; margin-bottom: 14px;
+  }
+  .p-detail-desc {
+    font-size: 14.5px; color: #475569; line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .p-detail-feats {
+    list-style: none; display: flex; flex-direction: column;
+    gap: 9px; margin-bottom: 32px;
+  }
+  .p-detail-feat {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13.5px; color: #0f172a; line-height: 1.5;
+  }
+  .p-detail-feat-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #f0fdf4; border: 1px solid #bbf7d0;
+    display: flex; align-items: center; justify-content: center;
+    color: #16a34a; flex-shrink: 0; margin-top: 1px;
+  }
+  .p-detail-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .p-detail-btn-cta {
+    flex-direction: column !important; align-items: flex-start !important;
+    padding: 12px 22px !important; gap: 1px !important;
+    line-height: 1.3;
+  }
+  .p-detail-btn-sub {
+    font-size: 10.5px; font-weight: 600;
+    color: rgba(255,255,255,.5); letter-spacing: .02em;
+  }
+  /* right column */
+  .p-detail-right { display: flex; flex-direction: column; gap: 14px; }
+  .p-detail-card-dark {
+    background: #0f172a; border-radius: 20px; padding: 28px 24px;
+  }
+  .p-detail-abbr-badge {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #fff;
+    letter-spacing: -.3px; margin-bottom: 20px;
+  }
+  .p-detail-stat-num {
+    font-size: 52px; font-weight: 800; color: #fff;
+    letter-spacing: -2px; line-height: 1; margin-bottom: 8px;
+  }
+  .p-detail-stat-lbl { font-size: 13px; color: #64748b; line-height: 1.5; }
+  .p-detail-card-light {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 20px; padding: 24px;
+  }
+  .p-detail-hiw-title {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: #94a3b8; margin-bottom: 14px;
+  }
+  .p-detail-step {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid #f1f5f9;
+    font-size: 13px; color: #475569; line-height: 1.5;
+  }
+  .p-detail-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .p-detail-step-num {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #0f172a; color: #fff;
+    font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  /* recording placeholder */
+  .p-detail-rec {
+    background: #0a0a0a; border-radius: 16px;
+    padding: 18px 20px 16px; border: 1px solid #1e293b;
+  }
+  .p-detail-rec-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .p-detail-rec-label {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: #64748b;
+  }
+  .p-detail-rec-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #ef4444;
+    animation: rec-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes rec-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+  .p-detail-rec-dur { font-size: 11px; color: #334155; font-variant-numeric: tabular-nums; }
+  .p-detail-rec-wave {
+    display: flex; align-items: center; gap: 3px; height: 38px; margin-bottom: 14px;
+  }
+  .p-detail-rec-wave span {
+    flex: 1; border-radius: 2px; background: #1e293b; min-height: 4px;
+  }
+  .p-detail-rec-controls {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .p-detail-rec-play-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: #fff; color: #0a0a0a; border: none; border-radius: 100px;
+    padding: 8px 18px; font-size: 12.5px; font-weight: 700;
+    cursor: pointer; font-family: inherit; transition: background .15s;
+  }
+  .p-detail-rec-play-btn:hover { background: #e2e8f0; }
+  .p-detail-rec-note { font-size: 11px; color: #334155; }
+</style>
+
 <script>
+  const PRODUCTS = {
+    'sourcing-agent': {
+      abbr:'SA', category:'HR Agents', title:'Talent Sourcing Agent',
+      cta:{ label:'Try Talent Sourcing Agent', sub:'94% faster than a human recruiter' },
+      desc:'The Talent Sourcing Agent goes through every platform — LinkedIn, GitHub, Xing, job boards — to find candidates who genuinely fit your company, not just keywords. It builds the shortlist, writes a personalised message for each person, and notifies you the moment they\'re ready. Upload your process docs, role briefs, or 20 years of recruitment knowledge in PDF, Word, or Markdown — it reads everything, understands your company inside out, and becomes a fully capable colleague in your team.',
+      features:[
+        'Searches every platform — LinkedIn, GitHub, Xing, job boards & your internal database',
+        'Creates a targeted shortlist of candidates who truly match your company and culture',
+        'Writes personalised outreach for each candidate — tone, language, and context adapted',
+        'Notifies you when candidates are ready and waiting — zero manual follow-up needed',
+        'Upload PDF, Word, or Markdown files — it learns from your docs and years of experience',
+      ],
+      stat:{ num:'94%', lbl:'faster at finding the right candidate than a human recruiter' },
+      steps:[
+        'Feed it your role brief, company docs, or years of recruitment knowledge',
+        'Agent scans every platform, scores every match, and builds your shortlist',
+        'Personalised messages sent — you get notified when candidates are ready',
+      ],
+    },
+    'screening-phone': {
+      abbr:'SP', category:'HR Agents', title:'Screening Phone Agent',
+      recording: true,
+      desc:'Every applicant gets a real, dynamic two-way conversation — not a rigid script. Candidates can ask questions, jump in mid-sentence, and get answers about the role, salary, company culture, and what the next steps look like. The AI runs up to 10 calls simultaneously so your entire pipeline gets screened at the same time — 45%+ faster and more cost-effective than traditional phone screening.',
+      features:[
+        'Dynamic two-way conversation — candidates ask questions and interject naturally',
+        'AI answers questions about the role, company culture, salary & next steps',
+        'Runs up to 10 simultaneous calls — screen your full pipeline in hours, not days',
+        '45%+ faster and more cost-effective than manual phone screening',
+        'Multi-language support including Slovak, Czech & English',
+      ],
+      stat:{ num:'10×', lbl:'more candidates screened per day vs manual calls' },
+      steps:[
+        'Set your screening questions and scoring criteria for the role',
+        'AI calls up to 10 candidates at the same time — available 24/7',
+        'Recruiter receives a scored report within minutes of each call',
+      ],
+    },
+    'online-meeting': {
+      abbr:'OM', category:'HR Agents', title:'Online Meeting Agent',
+      desc:'A full AI-led interview that actually knows your candidate. Before the call, the AI reads the CV in detail — then goes deep: tailored follow-up questions built from real experience, probing for specifics, covering technical depth, motivation, and soft skills. Candidates join whenever suits them, directly inside Google Meet, Teams, or Zoom — no new tools, no scheduling bottleneck.',
+      features:[
+        'AI reads and analyses the candidate\'s full CV before the interview starts',
+        'Deep, tailored questions built from the candidate\'s actual experience and skills',
+        'Candidate joins on their own schedule — no waiting for a recruiter to be available',
+        'Works natively inside Google Meet, Microsoft Teams, and Zoom',
+        'Full transcript, candidate scoring, and key highlights sent to the recruiter instantly',
+      ],
+      stat:{ num:'80%', lbl:'reduction in time spent on initial interview rounds' },
+      steps:[
+        'Candidate submits their CV — AI reads it and prepares tailored questions',
+        'Candidate opens the link and joins whenever they\'re ready — Meet, Teams, or Zoom',
+        'Recruiter receives a full scored report with transcript immediately after',
+      ],
+    },
+    'candidate-expertise': {
+      abbr:'CE', category:'HR Agents', title:'Candidate Expertise Screening',
+      desc:'InstaView analyses who you\'re looking for, sets the criteria, and understands the full context of the role. Then it evaluates candidates in depth — testing coding and programming skills, language proficiency, soft skills, and hard domain knowledge. It monitors how they think and how they work, goes further by asking follow-up questions about their actual work, and probes their expertise directly. You see exactly what each candidate can do — not just what they claim on a CV.',
+      features:[
+        'Tests coding & programming skills with real tasks adapted to the specific role',
+        'Evaluates language proficiency — spoken, written, and technical vocabulary',
+        'Assesses soft skills: communication, problem-solving, adaptability, and teamwork',
+        'Deep hard-skill evaluation with follow-up questions based on each candidate\'s answers',
+        'InstaView sets evaluation criteria automatically based on the context of who you\'re hiring',
+      ],
+      stat:{ num:'70%', lbl:'of unqualified candidates filtered before the interview stage' },
+      steps:[
+        'InstaView analyses the role and sets evaluation criteria automatically',
+        'Candidates complete a deep expertise assessment across coding, language, and skills',
+        'Full skill map per candidate with scores across every dimension delivered to you',
+      ],
+    },
+    'critical-thinking': {
+      abbr:'CT', category:'HR Agents', title:'Critical Thinking Assessment',
+      desc:'Identify candidates who think clearly under pressure. The AI presents real-world business scenarios relevant to the role and evaluates responses for analytical reasoning, problem-solving approach, and decision quality — insight no CV can provide.',
+      features:[
+        'Real-world scenario-based questions tailored to the role',
+        'Multi-dimensional evaluation: reasoning, structure, creativity',
+        'Behavioural pattern and consistency analysis',
+        'Team fit scoring based on your company values',
+        'Comparative ranking across all assessed candidates',
+      ],
+      stat:{ num:'4×', lbl:'better prediction of on-the-job performance vs CV screening' },
+      steps:[
+        'AI creates role-specific scenarios based on your requirements',
+        'Candidate completes the assessment at their own pace',
+        'Detailed reasoning analysis and team-fit score delivered',
+      ],
+    },
+    'database-reactivation': {
+      abbr:'DR', category:'HR Operations', title:'Database Reactivation',
+      desc:'The bigger your talent database, the harder it becomes to know who is actually worth calling. Database Reactivation puts AI to work on your entire pool — it understands the full context of who you are hiring for, calls candidates directly, and holds a real dynamic two-way conversation to find out who is relevant and who is not. Quality matters more than quantity, and AI makes sure every search starts from a clean, qualified shortlist.',
+      features:[
+        'AI understands the context of the role and who you\'re looking for before making a single call',
+        'Calls through your entire database — candidates can ask questions and AI answers dynamically',
+        'Determines relevance for the current opening through real conversation, not just profile matching',
+        'Flags who is interested, available, and a strong fit — automatically, at any database size',
+        'Keeps your database quality high so every new search starts from accurate, up-to-date data',
+      ],
+      stat:{ num:'10×', lbl:'faster to qualify your entire candidate database than manual outreach' },
+      steps:[
+        'AI analyses the role and learns exactly who you\'re looking for before making a single call',
+        'AI calls through your database — a dynamic two-way conversation with every candidate',
+        'You receive a ranked shortlist of relevant, interested, and available candidates',
+      ],
+    },
+    'ai-resume': {
+      abbr:'AR', category:'HR Operations', title:'AI Resume Screening',
+      desc:'AI reads every CV in full context — not just keywords — understands the details that matter, and ranks candidates automatically based on criteria you define. Upload the CVs, tell the AI what\'s important: seniority, language skills, culture fit, experience depth. You get back a prioritised shortlist with a detailed analysis card for each candidate. 1 CV = 1 Credit — you only pay for what you screen.',
+      features:[
+        'AI reads and understands full CV context — seniority, language, experience depth, culture fit',
+        'You define the criteria — AI ranks every candidate against them automatically',
+        'Role Fit Percentage shown for each candidate so you see the match at a glance',
+        'Detailed analysis per CV: Overall Evaluation, Strengths, Areas for Improvement',
+        'Transparent pricing — 1 CV = 1 Credit, no bulk commitments needed',
+      ],
+      stat:{ num:'4h', lbl:'saved per recruiter on every single screening round' },
+      steps:[
+        'Upload your CVs and tell the AI what criteria matter most for the role',
+        'AI reads every CV in full and scores each candidate automatically',
+        'Review the ranked shortlist — each candidate comes with a full analysis card',
+      ],
+    },
+    'background-verification': {
+      abbr:'BV', category:'HR Operations', title:'Background Verification',
+      desc:'Candidates claim experience, titles, and achievements — AI verifies all of it. The Background Verification agent calls previous employers directly, checks the candidate\'s full work history, and confirms every statement made during the hiring process. If something doesn\'t add up, you\'ll know before the offer stage.',
+      features:[
+        'AI calls previous employers by phone and verifies the candidate\'s stated work history',
+        'Confirms job titles, tenure, and responsibilities directly with the source',
+        'Checks and verifies every claim the candidate made during the hiring process',
+        'Contacts references with structured questions and captures responses automatically',
+        'Delivers a complete verification report — flagging anything that doesn\'t match',
+      ],
+      stat:{ num:'5×', lbl:'faster verification compared to traditional manual processes' },
+      steps:[
+        'AI reviews the candidate\'s CV and identifies every claim and employer to verify',
+        'AI calls previous employers and references directly — real conversations, not just emails',
+        'Full verification report delivered with every confirmed fact and any discrepancies flagged',
+      ],
+    },
+    'candidate-infoline': {
+      abbr:'CI', category:'HR Operations', title:'Candidate Infoline 24/7',
+      desc:'Candidates shouldn\'t wait days to hear back. The AI Infoline answers questions about application status, interview scheduling, role details, and next steps — via phone, chat, or email — around the clock, with zero recruiter time spent.',
+      features:[
+        'Available 24/7 via phone, chat, and email channels',
+        'Real-time access to candidate application status from your ATS',
+        'Automated interview scheduling and confirmation',
+        'Handles FAQs about the role, company, and hiring process',
+        'Smooth handoff to a human recruiter for complex queries',
+      ],
+      stat:{ num:'24/7', lbl:'availability with zero recruiter time spent on FAQs' },
+      steps:[
+        'AI connects to your ATS for real-time application data',
+        'Candidates reach out any time — AI responds instantly',
+        'Complex queries escalated to a recruiter automatically',
+      ],
+    },
+    'company-process': {
+      abbr:'CP', category:'HR Operations', title:'Company Process Analysis',
+      desc:'Before you automate, understand where you\'re losing time. The AI analyses your entire hiring workflow — from first application to signed offer — identifies the biggest bottlenecks, and produces a prioritised roadmap with projected savings.',
+      features:[
+        'Full end-to-end hiring workflow audit',
+        'Bottleneck identification with time-loss quantification',
+        'Automation opportunity mapping per hiring stage',
+        'ROI calculator for each recommended change',
+        'Prioritised 90-day implementation roadmap',
+      ],
+      stat:{ num:'60%', lbl:'of hiring bottlenecks identified and resolved in the first audit' },
+      steps:[
+        'AI audits current process data and interviews key stakeholders',
+        'Full workflow map with bottleneck analysis created',
+        'Prioritised roadmap with ROI projections delivered',
+      ],
+    },
+  };
+
+  const REC_HEIGHTS = [30,60,45,80,55,90,40,70,50,85,35,65,75,45,55,80,60,70,40,90];
+
+  function buildRecording() {
+    const bars = REC_HEIGHTS.map(h =>
+      `<span style="height:${h}%"></span>`).join('');
+    return `
+      <div class="p-detail-rec" id="p-recording-placeholder">
+        <div class="p-detail-rec-top">
+          <div class="p-detail-rec-label">
+            <span class="p-detail-rec-dot"></span>
+            Real AI screening call
+          </div>
+          <span class="p-detail-rec-dur">4:32</span>
+        </div>
+        <div class="p-detail-rec-wave">${bars}</div>
+        <div class="p-detail-rec-controls">
+          <button class="p-detail-rec-play-btn">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Play recording
+          </button>
+          <span class="p-detail-rec-note">Recording uploading soon</span>
+        </div>
+      </div>`;
+  }
+
+  function buildProductDetail(p) {
+    const feats = p.features.map(f => `
+      <li class="p-detail-feat">
+        <span class="p-detail-feat-check">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        ${f}
+      </li>`).join('');
+    const steps = p.steps.map((s, i) => `
+      <div class="p-detail-step">
+        <span class="p-detail-step-num">${i + 1}</span>
+        <span>${s}</span>
+      </div>`).join('');
+    return `
+      <button class="p-detail-back" onclick="closeProduct()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to all products
+      </button>
+      <div class="p-detail-inner">
+        <div class="p-detail-left">
+          <span class="p-detail-tag">${p.category}</span>
+          <h2 class="p-detail-title">${p.title}</h2>
+          <p class="p-detail-desc">${p.desc}</p>
+          <ul class="p-detail-feats">${feats}</ul>
+          <div class="p-detail-actions">
+            ${p.cta
+              ? `<a href="#contact" class="btn btn-dark p-detail-btn-cta">${p.cta.label} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span class="p-detail-btn-sub">${p.cta.sub}</span></a>`
+              : `<a href="#contact" class="btn btn-dark">Book a Demo <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`
+            }
+            <a href="#contact" class="btn">Try the app</a>
+          </div>
+        </div>
+        <div class="p-detail-right">
+          ${p.recording ? buildRecording() : ''}
+          <div class="p-detail-card-dark">
+            <div class="p-detail-abbr-badge">${p.abbr}</div>
+            <div class="p-detail-stat-num">${p.stat.num}</div>
+            <div class="p-detail-stat-lbl">${p.stat.lbl}</div>
+          </div>
+          <div class="p-detail-card-light">
+            <div class="p-detail-hiw-title">How it works</div>
+            ${steps}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function openProduct(slug) {
+    const p = PRODUCTS[slug];
+    if (!p) return;
+    const detail = document.getElementById('p-detail');
+    const grid   = document.getElementById('p-grid');
+    detail.innerHTML = buildProductDetail(p);
+    grid.style.display   = 'none';
+    detail.style.display = 'block';
+    history.replaceState(null, '', '#' + slug);
+  }
+
+  function closeProduct() {
+    document.getElementById('p-grid').style.display  = 'grid';
+    document.getElementById('p-detail').style.display = 'none';
+    history.replaceState(null, '', '#agents');
+  }
+
+  function initFromHash() {
+    const hash = window.location.hash.slice(1);
+    if (PRODUCTS[hash]) {
+      openProduct(hash);
+      setTimeout(function() {
+        var el = document.getElementById('agents');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFromHash);
+  } else {
+    initFromHash();
+  }
+  window.addEventListener('hashchange', initFromHash);
+
   function handleNewsletter(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button');
