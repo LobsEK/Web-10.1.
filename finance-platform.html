@@ -1740,7 +1740,7 @@
 <!-- ═══ MASCOT AI WIDGET — MAIN PAGE ════════════════════════════ -->
 <div id="msc-wrap" class="msc-state-idle">
 
-  <div id="msc-greeting">👋 Ahoj, som Boxy!</div>
+  <div id="msc-greeting">👋 Hey, I'm Boxy!</div>
 
   <div id="msc-panel">
     <div class="msc-ph">
@@ -1751,10 +1751,10 @@
         <div class="msc-ph-name">Boxy</div>
         <div class="msc-ph-sub"><span class="msc-ph-dot"></span>InstaView AI · online</div>
       </div>
-      <button class="msc-chat-switch" onclick="switchToChat()" title="Prepnúť na chat">
+      <button class="msc-chat-switch" onclick="switchToChat()" title="Switch to chat">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </button>
-      <button class="msc-ph-close" onclick="mscClose()" aria-label="Zavrieť">
+      <button class="msc-ph-close" onclick="mscClose()" aria-label="Close">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
@@ -1772,32 +1772,32 @@
           </div>
         </div>
       </div>
-      <p class="voice-status" id="voice-status">Klikni a hovor s Boxym</p>
+      <p class="voice-status" id="voice-status">Click and talk to Boxy</p>
       <p class="voice-transcript" id="voice-transcript"></p>
       <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoice()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-        <span id="voice-mic-label">Hovoriť s Boxym</span>
+        <span id="voice-mic-label">Talk to Boxy</span>
       </button>
-      <button class="voice-to-chat-btn" onclick="switchToChat()">alebo píš →</button>
+      <button class="voice-to-chat-btn" onclick="switchToChat()">or type instead →</button>
     </div>
 
     <!-- CHAT MODE (hidden) -->
     <div id="msc-chat-view" style="display:none;">
       <div class="msc-msgs" id="msc-msgs">
-        <div class="msc-msg-ai"><div class="msc-bubble">Ahoj! 👋 Tu môžeš písať. Na čo sa chceš opýtať?</div></div>
+        <div class="msc-msg-ai"><div class="msc-bubble">Hey! 👋 Type your question below.</div></div>
       </div>
       <div class="msc-quick-wrap" id="msc-quick-wrap">
-        <button class="msc-quick-btn" onclick="mscQuick('Ako funguje AI screening?')">AI screening?</button>
-        <button class="msc-quick-btn" onclick="mscQuick('Koľko to stojí?')">Cena?</button>
+        <button class="msc-quick-btn" onclick="mscQuick('Ako funguje AI screening?')">How does it work?</button>
+        <button class="msc-quick-btn" onclick="mscQuick('Koľko to stojí?')">Pricing?</button>
         <button class="msc-quick-btn" onclick="mscQuick('Chcem demo')">Demo</button>
       </div>
       <form class="msc-input-row" onsubmit="mscSend(event)">
-        <input class="msc-input" id="msc-input" type="text" placeholder="Napíš správu…" autocomplete="off"/>
-        <button class="msc-send-btn" type="submit" aria-label="Odoslať">
+        <input class="msc-input" id="msc-input" type="text" placeholder="Type a message…" autocomplete="off"/>
+        <button class="msc-send-btn" type="submit" aria-label="Send">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </form>
-      <button class="chat-to-voice-btn" onclick="switchToVoice()">← Späť na hlas</button>
+      <button class="chat-to-voice-btn" onclick="switchToVoice()">← Back to voice</button>
     </div>
   </div>
 
@@ -2286,9 +2286,9 @@
 <script>
 (function() {
   const aiReplies = {
-    'ako funguje ai screening?': 'AI agent zavolá kandidátovi, vedie štruktúrovaný rozhovor a okamžite vygeneruje hodnotenie. Celý proces trvá 10–15 minút bez účasti recruitera. 🤖',
-    'koľko to stojí?': 'Ceny závisí od počtu pozícií a rozsahu. Pozri sekciu Pricing alebo nás kontaktuj na info@instaview.sk — radi pripravíme ponuku na mieru. 💬',
-    'chcem demo': 'Super! Prejdi na HR stránku kde ti AI zavolá naživo. Alebo nás kontaktuj a dohodneme si demo call. 🚀',
+    'ako funguje ai screening?': 'The AI agent calls the candidate, runs a structured interview, and generates an evaluation in 10–15 min — no recruiter needed. 🤖',
+    'koľko to stojí?': 'Pricing depends on the number of roles and scope. See the Pricing section or email info@instaview.sk. 💬',
+    'chcem demo': 'Great! Go to the HR page where AI will call you live. Or contact us to schedule a demo. 🚀',
   };
 
   let panelOpen = false;
@@ -2323,7 +2323,7 @@
     addMsg(text, 'user');
     setState('thinking');
     setTimeout(() => {
-      const reply = aiReplies[text.toLowerCase()] || 'Dobrá otázka! Kontaktuj nás na info@instaview.sk a radi odpovieme. 😊';
+      const reply = aiReplies[text.toLowerCase()] || 'Good question! Reach out at info@instaview.sk and we'll be happy to help. 😊';
       addMsg(reply, 'ai');
       setState('talking');
       setTimeout(() => setState('idle'), 2000);
@@ -2341,7 +2341,7 @@
     setState('thinking');
     setTimeout(() => {
       const key = val.toLowerCase();
-      const reply = aiReplies[key] || 'Ďakujem za správu! Pre podrobnejšie info nás kontaktuj na info@instaview.sk. 😊';
+      const reply = aiReplies[key] || 'Thanks for your message! For more info reach out at info@instaview.sk. 😊';
       addMsg(reply, 'ai');
       setState('talking');
       setTimeout(() => setState('idle'), 2000);
@@ -2388,7 +2388,7 @@
     recognition.interimResults = true;
     recognition.onstart = function() {
       voiceActive = true;
-      document.getElementById('voice-status').textContent = 'Počúvam... hovor';
+      document.getElementById('voice-status').textContent = 'Listening… speak now';
       document.getElementById('voice-mic-btn').classList.add('listening');
       document.getElementById('voice-mic-label').textContent = 'Stop';
       document.querySelector('.voice-vis').classList.add('listening');
@@ -2401,11 +2401,11 @@
     recognition.onend = function() {
       voiceActive = false;
       document.getElementById('voice-mic-btn').classList.remove('listening');
-      document.getElementById('voice-mic-label').textContent = 'Hovoriť s Boxym';
+      document.getElementById('voice-mic-label').textContent = 'Talk to Boxy';
       document.querySelector('.voice-vis').classList.remove('listening');
       var text = document.getElementById('voice-transcript').textContent.trim();
       if (text) {
-        document.getElementById('voice-status').textContent = 'Boxy odpovedá...';
+        document.getElementById('voice-status').textContent = 'Boxy is replying…';
         setState('thinking');
         setTimeout(function() {
           var reply = getAIReplyText(text.toLowerCase());
@@ -2419,14 +2419,14 @@
           }
         }, 900);
       } else {
-        document.getElementById('voice-status').textContent = 'Klikni a hovor s Boxym';
+        document.getElementById('voice-status').textContent = 'Click and talk to Boxy';
       }
     };
     recognition.onerror = function() {
       voiceActive = false;
       document.getElementById('voice-mic-btn').classList.remove('listening');
-      document.getElementById('voice-mic-label').textContent = 'Hovoriť s Boxym';
-      document.getElementById('voice-status').textContent = 'Skús znova alebo použi chat';
+      document.getElementById('voice-mic-label').textContent = 'Talk to Boxy';
+      document.getElementById('voice-status').textContent = 'Try again or switch to chat';
     };
   }
 
@@ -2437,13 +2437,13 @@
 
   function getAIReplyText(key) {
     var r = {
-      'screening': 'AI agent zavolá kandidátovi, vedie rozhovor a okamžite vygeneruje hodnotenie za 10 až 15 minút.',
-      'cen': 'Ceny závisia od počtu pozícií. Pozri sekciu Pricing alebo nás kontaktuj na info@instaview.sk.',
-      'demo': 'Super! Prejdi na HR stránku a AI ti zavolá naživo. Alebo nás kontaktuj na info@instaview.sk.',
-      'ahoj': 'Ahoj! Som Boxy, AI agent od InstaView. Pomôžem ti s otázkami o nábore a HR automatizácii.',
+      'screening': 'The AI agent calls the candidate, conducts a structured interview, and delivers an evaluation in 10–15 minutes.',
+      'cen': 'Pricing depends on the number of roles. See the Pricing section or email info@instaview.sk.',
+      'demo': 'Great! Head to the HR page and AI will call you live. Or contact us at info@instaview.sk.',
+      'ahoj': 'Hey! I am Boxy, the AI agent from InstaView. I can help with hiring and HR automation questions.',
     };
     for (var k in r) { if (key.indexOf(k) !== -1) return r[k]; }
-    return 'Ďakujem za otázku! Pre viac info nás kontaktuj na info@instaview.sk.';
+    return 'Thanks for your question! For more info reach out at info@instaview.sk.';
   }
 
   function switchToChat() {
@@ -2470,7 +2470,7 @@
         setTimeout(function() {
           var g = document.getElementById('msc-greeting');
           if (g) {
-            g.textContent = '💬 Pomôžem s niečím?';
+            g.textContent = '💬 Can I help you?';
             g.classList.add('show');
             g.onclick = mscOpen;
             setTimeout(function() { g.classList.remove('show'); }, 6000);
