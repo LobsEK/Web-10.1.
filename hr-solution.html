@@ -2915,46 +2915,28 @@
 
   <div id="msc-char" onclick="mscToggle()">
     <div id="msc-dots"><span></span><span></span><span></span></div>
-    <svg viewBox="0 0 100 122" width="80" height="98" style="display:block;overflow:visible;">
-  <defs>
-    <linearGradient id="mbody" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#5b9ffa"/>
-      <stop offset="100%" stop-color="#1a6ef5"/>
-    </linearGradient>
-    <linearGradient id="marm" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3d82ef"/>
-      <stop offset="100%" stop-color="#1258d8"/>
-    </linearGradient>
-  </defs>
-  <!-- Shadow -->
-  <ellipse cx="50" cy="119" rx="22" ry="5" fill="rgba(26,100,245,.18)"/>
-  <!-- Left arm -->
-  <ellipse cx="11" cy="63" rx="13" ry="8" fill="url(#marm)" transform="rotate(-22 11 63)"/>
-  <!-- Right arm -->
-  <ellipse cx="89" cy="63" rx="13" ry="8" fill="url(#marm)" transform="rotate(22 89 63)"/>
-  <!-- Body -->
-  <rect x="17" y="15" width="66" height="74" rx="21" fill="url(#mbody)"/>
-  <!-- Highlight -->
-  <ellipse cx="30" cy="27" rx="10" ry="6" fill="rgba(255,255,255,.22)" transform="rotate(-25 30 27)"/>
-  <!-- Left leg -->
-  <rect x="26" y="82" width="18" height="24" rx="9" fill="url(#marm)"/>
-  <!-- Right leg -->
-  <rect x="56" y="82" width="18" height="24" rx="9" fill="url(#marm)"/>
-  <!-- IDLE face -->
-  <g id="msc-idle-face">
-    <ellipse cx="37" cy="57" rx="5.5" ry="8" fill="#1a2744"/>
-    <path d="M 52 56 Q 62 48 72 56" stroke="#1a2744" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-  </g>
-  <!-- THINKING face -->
-  <g id="msc-think-face" style="display:none;">
-    <path d="M 37 47 A 10 10 0 1 1 27 57" stroke="#1a2744" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <polyline points="37,47 32,42 41,42" stroke="#1a2744" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 63 47 A 10 10 0 1 1 53 57" stroke="#1a2744" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <polyline points="63,47 58,42 67,42" stroke="#1a2744" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <!-- Mouth (talking) -->
-  <ellipse id="msc-mouth" cx="50" cy="71" rx="9" ry="5.5" fill="#1a2744" style="display:none;"/>
-</svg>
+    
+    <div class="kubi-agent-wrapper">
+    <div class="kubi-shadow"></div>
+    <div class="kubi-agent">
+      <div class="kubi-arm left"></div>
+      <div class="kubi-arm right"></div>
+      <div class="kubi-leg left"></div>
+      <div class="kubi-leg right"></div>
+      <div class="kubi-body">
+        <div class="kubi-eyes">
+          <div class="kubi-eye oval"></div>
+          <div class="kubi-eye wink">
+            <svg viewBox="0 0 100 50" width="100%" height="100%">
+              <path d="M 10 40 Q 50 -15 90 40" fill="none" stroke="#0F172A" stroke-width="18" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="kubi-mouth"></div>
+      </div>
+    </div>
+  </div>
+  
   </div>
 
 </div>
@@ -2983,19 +2965,13 @@
   0%,100% { transform: translateY(0); }
   50%      { transform: translateY(-7px); }
 }
-.msc-state-thinking #msc-char {
-  animation: msc-wobble .5s ease-in-out infinite !important;
-}
-@keyframes msc-wobble {
-  0%,100% { transform: rotate(0deg); }
+
+
   25%     { transform: rotate(-4deg); }
   75%     { transform: rotate(4deg); }
 }
-.msc-state-talking #msc-char {
-  animation: msc-bounce .35s ease-in-out infinite !important;
-}
-@keyframes msc-bounce {
-  0%,100% { transform: scaleY(1); }
+
+
   50%     { transform: scaleY(1.06); }
 }
 
@@ -3131,31 +3107,169 @@
 }
 .msc-send-btn:hover { opacity:.85; }
 
-/* Periodic spin (torque) */
-.msc-state-idle.msc-spinning #msc-char {
-  animation: msc-spin-torque .7s cubic-bezier(.4,0,.2,1) !important;
-}
-@keyframes msc-spin-torque {
-  0%   { transform: translateY(0) rotateY(0deg) scale(1); }
+
+
   40%  { transform: translateY(-8px) rotateY(180deg) scale(.85); }
   100% { transform: translateY(0) rotateY(360deg) scale(1); }
 }
+
+/* ── Kubi Character ─────────────────────────── */
+.kubi-agent-wrapper {
+  position: relative;
+  width: 90px; height: 104px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+  perspective: 500px;
+}
+.kubi-agent {
+  position: relative;
+  width: 74px; height: 74px;
+  animation: floatAgent 4s ease-in-out infinite;
+  z-index: 2;
+}
+/* Float */
+@keyframes floatAgent {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-13px); }
+}
+/* Torque spin */
+.msc-state-idle.msc-spinning .kubi-agent {
+  animation: kubiTorque .75s cubic-bezier(.4,0,.2,1) !important;
+}
+@keyframes kubiTorque {
+  0%   { transform: translateY(0) rotateY(0deg) scale(1); }
+  45%  { transform: translateY(-12px) rotateY(180deg) scale(.82); }
+  100% { transform: translateY(0) rotateY(360deg) scale(1); }
+}
+/* Thinking wobble */
+.msc-state-thinking .kubi-agent {
+  animation: kubiWobble .55s ease-in-out infinite !important;
+}
+@keyframes kubiWobble {
+  0%,100% { transform: rotate(0deg); }
+  25%     { transform: rotate(-5deg); }
+  75%     { transform: rotate(5deg); }
+}
+/* Talking bounce */
+.msc-state-talking .kubi-agent {
+  animation: kubiBounce .38s ease-in-out infinite !important;
+}
+@keyframes kubiBounce {
+  0%,100% { transform: scaleY(1); }
+  50%     { transform: scaleY(1.08); }
+}
+/* Shadow */
+.kubi-shadow {
+  position: absolute;
+  bottom: 7px;
+  width: 54px; height: 8px;
+  background: rgba(0,0,0,.18);
+  border-radius: 50%;
+  animation: floatShadow 4s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes floatShadow {
+  0%,100% { transform: scale(1); opacity: .45; }
+  50%     { transform: scale(.78); opacity: .17; }
+}
+/* Body */
+.kubi-body {
+  position: absolute; top:0; left:0;
+  width:100%; height:100%;
+  background: #2563EB;
+  border-radius: 20px;
+  box-shadow:
+    inset 4px 4px 0 0 rgba(255,255,255,.45),
+    inset -5px -5px 0 0 rgba(0,30,100,.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  z-index: 10;
+}
+/* Arms & legs */
+.kubi-arm, .kubi-leg {
+  position: absolute;
+  background: #1D4ED8;
+  border-radius: 10px;
+  z-index: 1;
+}
+.kubi-arm { top: 18px; width: 14px; height: 30px; }
+.kubi-arm.left  { left: -7px; transform-origin: top center; transform: rotate(35deg); }
+.kubi-arm.right { right:-7px; transform-origin: top center; transform: rotate(-35deg); }
+.kubi-leg { bottom: -13px; width: 14px; height: 22px; }
+.kubi-leg.left  { left: 12px; }
+.kubi-leg.right { right:12px; }
+/* Eyes */
+.kubi-eyes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+}
+.kubi-eye.oval {
+  width: 13px; height: 26px;
+  background: #0F172A;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transition: all .25s ease;
+}
+.kubi-eye.wink {
+  width: 23px; height: 20px;
+  display: flex; align-items: center;
+  margin-top: -5px;
+}
+/* Thinking eyes → spinners */
+.msc-state-thinking .kubi-eye.oval {
+  background: transparent !important;
+  border: 3px solid #0F172A;
+  border-top-color: transparent;
+  border-radius: 50%;
+  width: 19px; height: 19px;
+  animation: kubiSpinEye .65s linear infinite !important;
+}
+.msc-state-thinking .kubi-eye.wink {
+  width: 19px; height: 19px;
+  margin-top: 0;
+  border: 3px solid #0F172A;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: kubiSpinEye .65s linear infinite reverse !important;
+}
+.msc-state-thinking .kubi-eye.wink svg { display: none; }
+@keyframes kubiSpinEye {
+  to { transform: rotate(360deg); }
+}
+/* Mouth */
+.kubi-mouth {
+  width: 24px; height: 0;
+  background: #0F172A;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  transition: height .2s ease;
+}
+.msc-state-talking .kubi-mouth {
+  height: 12px;
+  animation: kubiMouth .4s ease-in-out infinite alternate;
+}
+@keyframes kubiMouth {
+  0%   { height: 7px; }
+  100% { height: 14px; }
+}
+
 </style>
 <script>
 (function() {
   let panelOpen = false;
   let state = 'idle';
 
-  function setState(s) {
+    function setState(s) {
     state = s;
-    const wrap = document.getElementById('msc-wrap');
-    wrap.className = 'msc-state-' + s;
-    const idleFace = document.getElementById('msc-idle-face');
-    const thinkFace = document.getElementById('msc-think-face');
-    const mouth = document.getElementById('msc-mouth');
-    if (idleFace) idleFace.style.display = (s === 'thinking') ? 'none' : '';
-    if (thinkFace) thinkFace.style.display = (s === 'thinking') ? '' : 'none';
-    if (mouth) mouth.style.display = (s === 'talking') ? '' : 'none';
+    var wrap = document.getElementById('msc-wrap');
+    if (wrap) wrap.className = 'msc-state-' + s;
   }
 
   window.mscToggle = function() {
