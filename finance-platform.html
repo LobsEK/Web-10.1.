@@ -1745,30 +1745,60 @@
   <div id="msc-panel">
     <div class="msc-ph">
       <div class="msc-ph-avatar">
-        <svg viewBox="0 0 100 122" width="26" height="32"><defs><linearGradient id="mhg" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#a5b4fc"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs><ellipse cx="11" cy="63" rx="13" ry="8" fill="url(#mhg)" transform="rotate(-22 11 63)"/><ellipse cx="89" cy="63" rx="13" ry="8" fill="url(#mhg)" transform="rotate(22 89 63)"/><rect x="17" y="15" width="66" height="74" rx="21" fill="url(#mhg)"/><rect x="26" y="82" width="18" height="24" rx="9" fill="url(#mhg)"/><rect x="56" y="82" width="18" height="24" rx="9" fill="url(#mhg)"/><ellipse cx="37" cy="57" rx="5" ry="7" fill="rgba(255,255,255,.8)"/><path d="M52,56 Q62,49 72,56" stroke="rgba(255,255,255,.8)" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 100 122" width="26" height="32"><defs><linearGradient id="mhg" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#64748b"/></linearGradient></defs><ellipse cx="11" cy="63" rx="13" ry="8" fill="url(#mhg)" transform="rotate(-22 11 63)"/><ellipse cx="89" cy="63" rx="13" ry="8" fill="url(#mhg)" transform="rotate(22 89 63)"/><rect x="17" y="15" width="66" height="74" rx="21" fill="url(#mhg)"/><rect x="26" y="82" width="18" height="24" rx="9" fill="url(#mhg)"/><rect x="56" y="82" width="18" height="24" rx="9" fill="url(#mhg)"/><ellipse cx="37" cy="57" rx="5" ry="7" fill="rgba(255,255,255,.8)"/><path d="M52,56 Q62,49 72,56" stroke="rgba(255,255,255,.8)" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
       </div>
       <div>
         <div class="msc-ph-name">Boxy</div>
-        <div class="msc-ph-sub"><span class="msc-ph-dot"></span>Boxy · InstaView AI</div>
+        <div class="msc-ph-sub"><span class="msc-ph-dot"></span>InstaView AI · online</div>
       </div>
+      <button class="msc-chat-switch" onclick="switchToChat()" title="Prepnúť na chat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </button>
       <button class="msc-ph-close" onclick="mscClose()" aria-label="Zavrieť">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="msc-msgs" id="msc-msgs">
-      <div class="msc-msg-ai"><div class="msc-bubble">Ahoj! 👋 Som AI od InstaView. Môžem ti povedať viac o tom, ako automatizujeme nábor a HR procesy. Na čo sa chceš opýtať?</div></div>
-    </div>
-    <div class="msc-quick-wrap" id="msc-quick-wrap">
-      <button class="msc-quick-btn" onclick="mscQuick('Ako funguje AI screening?')">Ako funguje AI screening?</button>
-      <button class="msc-quick-btn" onclick="mscQuick('Koľko to stojí?')">Koľko to stojí?</button>
-      <button class="msc-quick-btn" onclick="mscQuick('Chcem demo')">Chcem demo</button>
-    </div>
-    <form class="msc-input-row" onsubmit="mscSend(event)">
-      <input class="msc-input" id="msc-input" type="text" placeholder="Napíš správu…" autocomplete="off"/>
-      <button class="msc-send-btn" type="submit" aria-label="Odoslať">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+
+    <!-- VOICE MODE (default) -->
+    <div id="msc-voice-view">
+      <div class="voice-vis">
+        <div class="vring"></div><div class="vring"></div><div class="vring"></div>
+        <div class="voice-face">
+          <div class="vface-eye oval"></div>
+          <div class="vface-eye wink">
+            <svg viewBox="0 0 100 60" width="100%" height="100%" style="overflow:visible;">
+              <path d="M 5 50 Q 50 -15 95 50" fill="none" stroke="#0f172a" stroke-width="22" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="voice-status" id="voice-status">Klikni a hovor s Boxym</p>
+      <p class="voice-transcript" id="voice-transcript"></p>
+      <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoice()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        <span id="voice-mic-label">Hovoriť s Boxym</span>
       </button>
-    </form>
+      <button class="voice-to-chat-btn" onclick="switchToChat()">alebo píš →</button>
+    </div>
+
+    <!-- CHAT MODE (hidden) -->
+    <div id="msc-chat-view" style="display:none;">
+      <div class="msc-msgs" id="msc-msgs">
+        <div class="msc-msg-ai"><div class="msc-bubble">Ahoj! 👋 Tu môžeš písať. Na čo sa chceš opýtať?</div></div>
+      </div>
+      <div class="msc-quick-wrap" id="msc-quick-wrap">
+        <button class="msc-quick-btn" onclick="mscQuick('Ako funguje AI screening?')">AI screening?</button>
+        <button class="msc-quick-btn" onclick="mscQuick('Koľko to stojí?')">Cena?</button>
+        <button class="msc-quick-btn" onclick="mscQuick('Chcem demo')">Demo</button>
+      </div>
+      <form class="msc-input-row" onsubmit="mscSend(event)">
+        <input class="msc-input" id="msc-input" type="text" placeholder="Napíš správu…" autocomplete="off"/>
+        <button class="msc-send-btn" type="submit" aria-label="Odoslať">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+      <button class="chat-to-voice-btn" onclick="switchToVoice()">← Späť na hlas</button>
+    </div>
   </div>
 
   <div id="msc-char" onclick="mscToggle()">
@@ -2024,8 +2054,7 @@
 .msc-state-idle.msc-spinning .agent-3d {
   animation: agentTorque .8s cubic-bezier(.4,0,.2,1) !important;
 }
-@keyframes agentTorque {
-  0%   { transform: rotateY(0deg)   scale(1); }
+
   45%  { transform: rotateY(180deg) scale(.82); }
   100% { transform: rotateY(360deg) scale(1); }
 }
@@ -2183,6 +2212,76 @@
 .msc-state-thinking .eye-wink { display: none !important; }
 @keyframes agentSpinEye { to { transform: rotate(360deg); } }
 
+
+/* Voice mode */
+#msc-voice-view { padding: 20px 16px 16px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+.voice-vis { position:relative; width:100px; height:100px; display:flex; align-items:center; justify-content:center; }
+.vring {
+  position:absolute; border-radius:50%;
+  border: 2px solid rgba(15,23,42,.15);
+  animation: vring-out 2.4s ease-out infinite;
+}
+.vring:nth-child(1){ width:60px;height:60px; animation-delay:0s; }
+.vring:nth-child(2){ width:60px;height:60px; animation-delay:.7s; }
+.vring:nth-child(3){ width:60px;height:60px; animation-delay:1.4s; }
+@keyframes vring-out { 0%{transform:scale(1);opacity:.7;} 100%{transform:scale(2.8);opacity:0;} }
+.voice-vis.listening .vring { border-color: rgba(15,23,42,.4); animation-duration: 1s; }
+
+.voice-face {
+  width:52px;height:52px; border-radius:14px;
+  background:linear-gradient(150deg,#3a8bff,#0c54d8);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  position:relative; z-index:2;
+  box-shadow: inset 3px 3px 8px rgba(255,255,255,.3), inset -3px -3px 8px rgba(0,30,120,.4);
+}
+.vface-eye.oval { width:9px;height:16px;background:#0f172a;border-radius:50%/55%; flex-shrink:0; }
+.vface-eye.wink { width:16px;height:10px;display:flex;align-items:center;flex-shrink:0;margin-top:-3px; }
+
+.voice-status { font-size:13px;font-weight:600;color:#0f172a;margin:0;text-align:center; }
+.voice-transcript { font-size:12px;color:#64748b;margin:0;text-align:center;min-height:16px;font-style:italic; }
+
+.voice-mic-btn {
+  display:flex;align-items:center;gap:8px;
+  background:#0f172a;color:#fff;
+  border:none;border-radius:100px;
+  padding:11px 22px;font-size:13.5px;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  transition:opacity .15s;
+}
+.voice-mic-btn:hover { opacity:.85; }
+.voice-mic-btn.listening { background:#ef4444; animation: mic-pulse .8s ease-in-out infinite; }
+@keyframes mic-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4);} 50%{box-shadow:0 0 0 8px rgba(239,68,68,0);} }
+
+.voice-to-chat-btn { font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline; }
+.chat-to-voice-btn { font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline;margin:4px auto 10px;display:block; }
+
+/* Dark theme overrides */
+.msc-ph { background: #0f172a !important; }
+.msc-msg-user .msc-bubble { background:#0f172a !important; }
+.msc-send-btn { background:#0f172a !important; }
+.msc-quick-btn { color:#0f172a !important; background:#f1f5f9 !important; border-color:#e2e8f0 !important; }
+.msc-chat-switch { background:none;border:none;cursor:pointer;padding:4px;display:flex;opacity:.8; }
+.msc-chat-switch:hover { opacity:1; }
+
+/* Pop-up from dot on load */
+@keyframes boxy-popup {
+  0%   { transform:scale(0) translateY(20px); opacity:0; }
+  70%  { transform:scale(1.08) translateY(-3px); opacity:1; }
+  100% { transform:scale(1) translateY(0); opacity:1; }
+}
+
+/* Tilt only — no full spin */
+.msc-state-idle.msc-spinning .agent-3d {
+  animation: agentTilt .9s ease-in-out !important;
+}
+@keyframes agentTilt {
+  0%   { transform:translateY(0) rotate(0deg); }
+  20%  { transform:translateY(-6px) rotate(-12deg); }
+  50%  { transform:translateY(-8px) rotate(14deg); }
+  80%  { transform:translateY(-4px) rotate(-8deg); }
+  100% { transform:translateY(0) rotate(0deg); }
+}
+
 </style>
 <script>
 (function() {
@@ -2277,6 +2376,110 @@
       setTimeout(function() { wrap.classList.remove('msc-spinning'); }, 700);
     }
   }, 6000);
+
+
+  // ── Voice mode ────────────────────────────────────
+  var voiceActive = false;
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var recognition = SR ? new SR() : null;
+  if (recognition) {
+    recognition.lang = 'sk-SK';
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.onstart = function() {
+      voiceActive = true;
+      document.getElementById('voice-status').textContent = 'Počúvam... hovor';
+      document.getElementById('voice-mic-btn').classList.add('listening');
+      document.getElementById('voice-mic-label').textContent = 'Stop';
+      document.querySelector('.voice-vis').classList.add('listening');
+    };
+    recognition.onresult = function(e) {
+      var t = '';
+      for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript;
+      document.getElementById('voice-transcript').textContent = t;
+    };
+    recognition.onend = function() {
+      voiceActive = false;
+      document.getElementById('voice-mic-btn').classList.remove('listening');
+      document.getElementById('voice-mic-label').textContent = 'Hovoriť s Boxym';
+      document.querySelector('.voice-vis').classList.remove('listening');
+      var text = document.getElementById('voice-transcript').textContent.trim();
+      if (text) {
+        document.getElementById('voice-status').textContent = 'Boxy odpovedá...';
+        setState('thinking');
+        setTimeout(function() {
+          var reply = getAIReplyText(text.toLowerCase());
+          document.getElementById('voice-status').textContent = reply;
+          document.getElementById('voice-transcript').textContent = '';
+          setState('idle');
+          if (window.speechSynthesis) {
+            var u = new SpeechSynthesisUtterance(reply);
+            u.lang = 'sk-SK';
+            window.speechSynthesis.speak(u);
+          }
+        }, 900);
+      } else {
+        document.getElementById('voice-status').textContent = 'Klikni a hovor s Boxym';
+      }
+    };
+    recognition.onerror = function() {
+      voiceActive = false;
+      document.getElementById('voice-mic-btn').classList.remove('listening');
+      document.getElementById('voice-mic-label').textContent = 'Hovoriť s Boxym';
+      document.getElementById('voice-status').textContent = 'Skús znova alebo použi chat';
+    };
+  }
+
+  function toggleVoice() {
+    if (!recognition) { switchToChat(); return; }
+    if (voiceActive) { recognition.stop(); } else { recognition.start(); }
+  }
+
+  function getAIReplyText(key) {
+    var r = {
+      'screening': 'AI agent zavolá kandidátovi, vedie rozhovor a okamžite vygeneruje hodnotenie za 10 až 15 minút.',
+      'cen': 'Ceny závisia od počtu pozícií. Pozri sekciu Pricing alebo nás kontaktuj na info@instaview.sk.',
+      'demo': 'Super! Prejdi na HR stránku a AI ti zavolá naživo. Alebo nás kontaktuj na info@instaview.sk.',
+      'ahoj': 'Ahoj! Som Boxy, AI agent od InstaView. Pomôžem ti s otázkami o nábore a HR automatizácii.',
+    };
+    for (var k in r) { if (key.indexOf(k) !== -1) return r[k]; }
+    return 'Ďakujem za otázku! Pre viac info nás kontaktuj na info@instaview.sk.';
+  }
+
+  function switchToChat() {
+    document.getElementById('msc-voice-view').style.display = 'none';
+    document.getElementById('msc-chat-view').style.display = 'flex';
+    document.getElementById('msc-chat-view').style.flexDirection = 'column';
+  }
+  function switchToVoice() {
+    document.getElementById('msc-chat-view').style.display = 'none';
+    document.getElementById('msc-voice-view').style.display = 'flex';
+  }
+
+  // ── Pop-up from dot on load ────────────────────────
+  (function() {
+    var char = document.getElementById('msc-char');
+    if (char) {
+      char.style.transform = 'scale(0)';
+      char.style.opacity = '0';
+      setTimeout(function() {
+        char.style.transition = 'none';
+        char.style.animation = 'boxy-popup .65s cubic-bezier(.34,1.56,.64,1) forwards';
+        char.style.transform = '';
+        char.style.opacity = '';
+        setTimeout(function() {
+          var g = document.getElementById('msc-greeting');
+          if (g) {
+            g.textContent = '💬 Pomôžem s niečím?';
+            g.classList.add('show');
+            g.onclick = mscOpen;
+            setTimeout(function() { g.classList.remove('show'); }, 6000);
+          }
+        }, 700);
+      }, 1400);
+    }
+  })();
+
 
   // Winking + mouse tracking for LOBI agent
   (function() {

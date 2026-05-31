@@ -3054,7 +3054,7 @@
 .msc-ph {
   display: flex; align-items: center; gap: 10px;
   padding: 12px 16px;
-  background: linear-gradient(135deg,#6366f1,#4f46e5);
+  background: #0f172a;
 }
 .msc-ph-avatar {
   width: 34px; height: 34px; border-radius: 50%;
@@ -3083,7 +3083,7 @@
   border-radius: 14px; font-size: 13px; line-height: 1.5;
 }
 .msc-msg-ai .msc-bubble { background:#f1f5f9; color:#0f172a; border-bottom-left-radius:4px; }
-.msc-msg-user .msc-bubble { background:linear-gradient(135deg,#6366f1,#4f46e5); color:#fff; border-bottom-right-radius:4px; }
+.msc-msg-user .msc-bubble { background: #0f172a; color:#fff; border-bottom-right-radius:4px; }
 
 .msc-quick-wrap {
   display: flex; flex-wrap: wrap; gap: 6px;
@@ -3112,7 +3112,7 @@
 .msc-input:focus { border-color:#6366f1; }
 .msc-send-btn {
   width:34px; height:34px; border-radius:50%;
-  background:linear-gradient(135deg,#6366f1,#4f46e5);
+  background: #0f172a;
   border:none; cursor:pointer;
   display:flex; align-items:center; justify-content:center;
   flex-shrink:0; transition:opacity .15s;
@@ -3129,6 +3129,8 @@
 
 
 
+
+@keyframes boxy-popup { 0%{transform:scale(0) translateY(20px);opacity:0;} 70%{transform:scale(1.08) translateY(-3px);opacity:1;} 100%{transform:scale(1) translateY(0);opacity:1;} }
 /* ── LOBI/KUBI 3D Agent Widget (55 % scale) ─────────── */
 .agent-container {
   position: relative;
@@ -3166,8 +3168,7 @@
 .msc-state-idle.msc-spinning .agent-3d {
   animation: agentTorque .8s cubic-bezier(.4,0,.2,1) !important;
 }
-@keyframes agentTorque {
-  0%   { transform: rotateY(0deg)   scale(1); }
+
   45%  { transform: rotateY(180deg) scale(.82); }
   100% { transform: rotateY(360deg) scale(1); }
 }
