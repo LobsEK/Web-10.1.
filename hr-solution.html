@@ -2915,27 +2915,26 @@
 
   <div id="msc-char" onclick="mscToggle()">
     <div id="msc-dots"><span></span><span></span><span></span></div>
-    <div class="kubi-agent-wrapper">
-    <div class="kubi-shadow"></div>
-    <div class="kubi-agent">
-      <div class="kubi-arm left"></div>
-      <div class="kubi-arm right"></div>
-      <div class="kubi-body">
-        <div class="kubi-highlight"></div>
-        <div class="kubi-eyes">
-          <div class="kubi-eye oval"></div>
-          <div class="kubi-eye wink">
-            <svg viewBox="0 0 100 50" width="100%" height="100%" overflow="visible">
-              <path d="M 10 40 Q 50 -15 90 40" fill="none" stroke="#0F172A" stroke-width="18" stroke-linecap="round"/>
+    <div class="agent-container">
+    <div class="agent-floor-shadow"></div>
+    <div class="agent-3d">
+      <div class="agent-arm left"></div>
+      <div class="agent-arm right"></div>
+      <div class="agent-leg left"></div>
+      <div class="agent-leg right"></div>
+      <div class="agent-body">
+        <div class="agent-eyes">
+          <div class="agent-eye oval"></div>
+          <div class="agent-eye wink">
+            <svg viewBox="0 0 100 60" width="100%" height="100%" style="overflow:visible;">
+              <path d="M 5 50 Q 50 -15 95 50" fill="none" stroke="#121C2D" stroke-width="24" stroke-linecap="round"/>
             </svg>
           </div>
         </div>
-        <div class="kubi-mouth"></div>
       </div>
-      <div class="kubi-leg left"></div>
-      <div class="kubi-leg right"></div>
     </div>
   </div>
+  
   
   
   </div>
@@ -3116,11 +3115,12 @@
 
 
 
-/* ── Kubi Widget ────────────────────────────────────── */
-.kubi-agent-wrapper {
+
+/* ── LOBI/KUBI 3D Agent Widget (60% scale) ──────────── */
+.agent-container {
   position: relative;
-  width: 130px;
-  height: 155px;
+  width: 140px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3131,181 +3131,177 @@
 
 @keyframes floatAgent {
   0%,100% { transform: translateY(0px); }
-  50%      { transform: translateY(-14px); }
+  50%      { transform: translateY(-12px); }
 }
 @keyframes floatShadow {
-  0%,100% { transform: translateX(-50%) scale(1);   opacity: 0.5; }
-  50%      { transform: translateX(-50%) scale(0.75); opacity: 0.2; }
+  0%,100% { transform: scale(1);   opacity: 0.15; }
+  50%      { transform: scale(0.8); opacity: 0.08; }
 }
 
-.kubi-agent {
+.agent-3d {
   position: relative;
-  width: 110px;
-  height: 110px;
+  width: 114px;
+  height: 114px;
   animation: floatAgent 3.5s ease-in-out infinite;
   z-index: 2;
 }
 
-/* Torque */
-.msc-state-idle.msc-spinning .kubi-agent {
-  animation: kubiTorque .8s cubic-bezier(.4,0,.2,1) !important;
+/* Torque spin */
+.msc-state-idle.msc-spinning .agent-3d {
+  animation: agentTorque .8s cubic-bezier(.4,0,.2,1) !important;
 }
-@keyframes kubiTorque {
+@keyframes agentTorque {
   0%   { transform: rotateY(0deg)   scale(1); }
   45%  { transform: rotateY(180deg) scale(.82); }
   100% { transform: rotateY(360deg) scale(1); }
 }
-.msc-state-thinking .kubi-agent { animation: kubiWobble .6s ease-in-out infinite !important; }
-@keyframes kubiWobble {
+/* Thinking wobble */
+.msc-state-thinking .agent-3d {
+  animation: agentWobble .55s ease-in-out infinite !important;
+}
+@keyframes agentWobble {
   0%,100% { transform: rotate(0);    }
   25%     { transform: rotate(-6deg); }
   75%     { transform: rotate(6deg);  }
 }
-.msc-state-talking .kubi-agent { animation: kubiBounce .4s ease-in-out infinite !important; }
-@keyframes kubiBounce {
+/* Talking bounce */
+.msc-state-talking .agent-3d {
+  animation: agentBounce .4s ease-in-out infinite !important;
+}
+@keyframes agentBounce {
   0%,100% { transform: scaleY(1);    }
   50%     { transform: scaleY(1.07); }
 }
 
-/* Shadow */
-.kubi-shadow {
+/* Floor shadow */
+.agent-floor-shadow {
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
+  bottom: 20px;
+  width: 96px;
   height: 12px;
-  background: #cbd5e1;
+  background: #0F172A;
   border-radius: 50%;
   animation: floatShadow 3.5s ease-in-out infinite;
   z-index: 1;
 }
 
-/* Arms — banana shape */
-.kubi-arm {
+/* Body — full 3D plastic effect */
+.agent-body {
   position: absolute;
-  top: 28px;
-  width: 26px;
-  height: 52px;
-  background: #1D4ED8;
-  z-index: 1;
-}
-.kubi-arm.left {
-  left: -14px;
-  border-radius: 40% 20% 50% 50%;
-  transform: rotate(30deg);
-  transform-origin: top center;
-}
-.kubi-arm.right {
-  right: -14px;
-  border-radius: 20% 40% 50% 50%;
-  transform: rotate(-30deg);
-  transform-origin: top center;
-}
-
-/* Body */
-.kubi-body {
-  position: absolute;
-  top: 0; left: 0;
   width: 100%; height: 100%;
-  background: #2563EB;
-  border-radius: 32px;
+  background: linear-gradient(135deg, #2E8CFF 0%, #0056FF 100%);
+  border-radius: 30px;
   box-shadow:
-    inset 6px  6px  0 0 rgba(255,255,255,0.45),
-    inset -7px -7px 0 0 rgba(0,30,100,0.30),
-    0 12px 28px rgba(29,78,216,0.45);
+    inset 7px   7px  15px rgba(255,255,255,0.40),
+    inset -9px -9px  18px rgba(0,30,120,0.50),
+    inset 2px   2px   4px rgba(255,255,255,0.90),
+    inset -2px -2px   4px rgba(0,20,80,0.60),
+    0 9px 15px rgba(0,86,255,0.25);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   z-index: 10;
-  overflow: hidden;
 }
 
-/* Gloss highlight */
-.kubi-highlight {
+/* Arms & legs — same 3D gradient */
+.agent-arm, .agent-leg {
   position: absolute;
-  top: 8px; left: 10px;
-  width: 42px; height: 26px;
-  background: rgba(255,255,255,0.22);
-  border-radius: 50%;
-  transform: rotate(-20deg);
-  pointer-events: none;
-}
-
-/* Legs */
-.kubi-leg {
-  position: absolute;
-  bottom: -18px;
-  width: 26px;
-  height: 34px;
-  background: #1D4ED8;
-  border-radius: 13px 13px 10px 10px;
+  background: linear-gradient(135deg, #2E8CFF, #0056FF);
+  border-radius: 24px;
   z-index: 1;
+  box-shadow:
+    inset 3px  3px  7px rgba(255,255,255,0.40),
+    inset -4px -4px 7px rgba(0,30,120,0.50);
 }
-.kubi-leg.left  { left: 20px; }
-.kubi-leg.right { right: 20px; }
+
+.agent-arm {
+  top: 39px;
+  width: 21px;
+  height: 45px;
+}
+.agent-arm.left {
+  left: -12px;
+  transform-origin: bottom right;
+  transform: rotate(-60deg);
+}
+.agent-arm.right {
+  right: -12px;
+  transform-origin: bottom left;
+  transform: rotate(60deg);
+}
+
+.agent-leg {
+  bottom: -13px;
+  width: 22px;
+  height: 30px;
+}
+.agent-leg.left  { left: 27px; }
+.agent-leg.right { right: 27px; }
 
 /* Eyes */
-.kubi-eyes {
+.agent-eyes {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  position: relative;
-  z-index: 2;
+  gap: 23px;
+  margin-top: -6px;
 }
-.kubi-eye.oval {
+
+.agent-eye.oval {
   width: 20px;
-  height: 38px;
-  background: #0F172A;
+  height: 33px;
+  background: #121C2D;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   flex-shrink: 0;
   transition: all .25s;
 }
-.kubi-eye.wink {
-  width: 34px;
-  height: 28px;
+
+.agent-eye.wink {
+  width: 29px;
+  height: 18px;
   display: flex;
   align-items: center;
-  margin-top: -8px;
+  margin-top: 3px;
   flex-shrink: 0;
 }
 
-/* Thinking eyes */
-.msc-state-thinking .kubi-eye.oval {
+/* Thinking — spinner eyes */
+.msc-state-thinking .agent-eye.oval {
   background: transparent !important;
-  border: 3.5px solid #0F172A;
+  border: 3px solid #121C2D;
   border-top-color: transparent;
   border-radius: 50%;
-  width: 24px; height: 24px;
-  animation: kubiSpinEye .6s linear infinite !important;
+  width: 22px; height: 22px;
+  animation: agentSpinEye .6s linear infinite !important;
 }
-.msc-state-thinking .kubi-eye.wink {
-  width: 24px; height: 24px; margin-top: 0;
-  border: 3.5px solid #0F172A;
+.msc-state-thinking .agent-eye.wink {
+  width: 22px; height: 22px; margin-top: 0;
+  border: 3px solid #121C2D;
   border-top-color: transparent;
   border-radius: 50%;
-  animation: kubiSpinEye .6s linear infinite reverse !important;
+  animation: agentSpinEye .6s linear infinite reverse !important;
 }
-.msc-state-thinking .kubi-eye.wink svg { display: none; }
-@keyframes kubiSpinEye { to { transform: rotate(360deg); } }
+.msc-state-thinking .agent-eye.wink svg { display: none; }
+@keyframes agentSpinEye { to { transform: rotate(360deg); } }
 
 /* Mouth */
-.kubi-mouth {
+.agent-mouth {
+  display: none;
   width: 34px; height: 0;
-  background: #0F172A;
+  background: #121C2D;
   border-radius: 0 0 17px 17px;
   overflow: hidden;
   transition: height .2s;
-  position: relative; z-index: 2;
+  position: absolute;
+  bottom: 28px;
+  left: 50%; transform: translateX(-50%);
 }
-.msc-state-talking .kubi-mouth {
-  height: 16px;
-  animation: kubiMouth .4s ease-in-out infinite alternate;
+.msc-state-talking .agent-mouth {
+  display: block;
+  height: 14px;
+  animation: agentMouth .4s ease-in-out infinite alternate;
 }
-@keyframes kubiMouth { 0%{height:9px} 100%{height:18px} }
+@keyframes agentMouth { 0%{height:8px} 100%{height:16px} }
 
 </style>
 <script>
