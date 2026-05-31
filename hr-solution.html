@@ -767,6 +767,117 @@
   <div class="p-detail" id="p-detail" style="display:none;"></div>
 </section>
 
+<!-- ═══ AI DEMO ════════════════════════════════════════════════════ -->
+<section class="demo-section">
+  <div class="demo-inner">
+
+    <div class="demo-text">
+      <p class="demo-tag">Try it yourself</p>
+      <h2 class="demo-heading">Experience AI hiring<br>firsthand.</h2>
+      <p class="demo-sub">Enter your details, pick a position and let the AI agent call you. See exactly what your candidates experience — in under 60 seconds.</p>
+    </div>
+
+    <div class="demo-right">
+      <!-- toggle -->
+      <div class="demo-toggle">
+        <button class="demo-tab demo-tab-active" id="tab-online" onclick="switchDemo('online')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          Online call
+        </button>
+        <button class="demo-tab" id="tab-phone" onclick="switchDemo('phone')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.73 5.73l1.44-1.44a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 14.92z"/></svg>
+          Phone call
+        </button>
+      </div>
+
+      <!-- Online call mock -->
+      <div class="demo-card" id="demo-online">
+        <div class="demo-card-bar">
+          <div class="demo-dots"><span></span><span></span><span></span></div>
+          <span class="demo-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Screening · 14:32
+          </span>
+        </div>
+        <div class="demo-video-row">
+          <div class="demo-participant">
+            <div class="demo-avatar-photo demo-avatar-empty"></div>
+            <span>Cassandra</span>
+            <div class="demo-badge">AI Interviewer</div>
+            <div class="demo-waves">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="demo-divider"></div>
+          <div class="demo-participant">
+            <div class="demo-avatar demo-avatar-user">MN</div>
+            <span>Martin Novák</span>
+          </div>
+        </div>
+        <div class="demo-transcript">
+          <div class="demo-transcript-label">Live transcript</div>
+          <p><strong>Cassandra:</strong> Tell me about your previous experience in this field.</p>
+          <p style="color:#64748b;"><strong>Martin:</strong> I worked for 3 years as a senior developer at...</p>
+        </div>
+        <div class="demo-controls">
+          <button class="demo-ctrl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button>
+          <button class="demo-ctrl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 7 16 12 23 17V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></button>
+          <button class="demo-ctrl demo-ctrl-end"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.73 5.73l1.44-1.44a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></button>
+          <button class="demo-ctrl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Phone call form -->
+      <div class="demo-card" id="demo-phone" style="display:none;">
+        <div class="demo-card-bar">
+          <div class="demo-dots"><span></span><span></span><span></span></div>
+          <span class="demo-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            AI Phone Screening
+          </span>
+        </div>
+        <div style="padding:24px 20px;">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+            <div class="demo-avatar-photo demo-avatar-empty" style="width:48px;height:48px;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#0f172a;">Cassandra</div>
+              <div style="font-size:11.5px;color:#64748b;">AI Interviewer · ready to call</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:#475569;margin-bottom:20px;line-height:1.5;">Fill in your details and our AI agent will call you within seconds — experience exactly what your candidates go through.</p>
+          <form class="demo-form" onsubmit="handleDemoCall(event)">
+            <div class="demo-form-row">
+              <input class="demo-input" type="text" placeholder="Your first name" required />
+              <input class="demo-input" type="tel" placeholder="Phone number (+421...)" required />
+            </div>
+            <select class="demo-input demo-select" required>
+              <option value="" disabled selected>Select a position to be screened for</option>
+              <option>Software Engineer</option>
+              <option>HR Manager</option>
+              <option>Sales Representative</option>
+              <option>Product Manager</option>
+              <option>Marketing Specialist</option>
+              <option>Customer Support Agent</option>
+            </select>
+            <button class="demo-call-btn" type="submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.73 5.73l1.44-1.44a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Let AI call me now
+            </button>
+          </form>
+          <div id="demo-success" style="display:none;text-align:center;padding:20px 0;">
+            <div style="font-size:32px;margin-bottom:12px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px;">AI is calling you!</p>
+            <p style="font-size:13px;color:#64748b;">Pick up — your screening interview is starting now.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══ HR STATS ══════════════════════════════════════════════════ -->
 <section style="background:#fff;padding:100px 48px;">
   <div style="max-width:1100px;margin:0 auto;">
@@ -945,117 +1056,6 @@
     </div>
   </div>
 </div>
-
-<!-- ═══ AI DEMO ════════════════════════════════════════════════════ -->
-<section class="demo-section">
-  <div class="demo-inner">
-
-    <div class="demo-text">
-      <p class="demo-tag">Try it yourself</p>
-      <h2 class="demo-heading">Experience AI hiring<br>firsthand.</h2>
-      <p class="demo-sub">Enter your details, pick a position and let the AI agent call you. See exactly what your candidates experience — in under 60 seconds.</p>
-    </div>
-
-    <div class="demo-right">
-      <!-- toggle -->
-      <div class="demo-toggle">
-        <button class="demo-tab demo-tab-active" id="tab-online" onclick="switchDemo('online')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
-          Online call
-        </button>
-        <button class="demo-tab" id="tab-phone" onclick="switchDemo('phone')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.73 5.73l1.44-1.44a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 14.92z"/></svg>
-          Phone call
-        </button>
-      </div>
-
-      <!-- Online call mock -->
-      <div class="demo-card" id="demo-online">
-        <div class="demo-card-bar">
-          <div class="demo-dots"><span></span><span></span><span></span></div>
-          <span class="demo-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Screening · 14:32
-          </span>
-        </div>
-        <div class="demo-video-row">
-          <div class="demo-participant">
-            <div class="demo-avatar-photo demo-avatar-empty"></div>
-            <span>Cassandra</span>
-            <div class="demo-badge">AI Interviewer</div>
-            <div class="demo-waves">
-              <span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="demo-divider"></div>
-          <div class="demo-participant">
-            <div class="demo-avatar demo-avatar-user">MN</div>
-            <span>Martin Novák</span>
-          </div>
-        </div>
-        <div class="demo-transcript">
-          <div class="demo-transcript-label">Live transcript</div>
-          <p><strong>Cassandra:</strong> Tell me about your previous experience in this field.</p>
-          <p style="color:#64748b;"><strong>Martin:</strong> I worked for 3 years as a senior developer at...</p>
-        </div>
-        <div class="demo-controls">
-          <button class="demo-ctrl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button>
-          <button class="demo-ctrl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 7 16 12 23 17V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></button>
-          <button class="demo-ctrl demo-ctrl-end"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.73 5.73l1.44-1.44a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></button>
-          <button class="demo-ctrl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
-        </div>
-      </div>
-
-      <!-- Phone call form -->
-      <div class="demo-card" id="demo-phone" style="display:none;">
-        <div class="demo-card-bar">
-          <div class="demo-dots"><span></span><span></span><span></span></div>
-          <span class="demo-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            AI Phone Screening
-          </span>
-        </div>
-        <div style="padding:24px 20px;">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-            <div class="demo-avatar-photo demo-avatar-empty" style="width:48px;height:48px;flex-shrink:0;"></div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:#0f172a;">Cassandra</div>
-              <div style="font-size:11.5px;color:#64748b;">AI Interviewer · ready to call</div>
-            </div>
-          </div>
-          <p style="font-size:13px;color:#475569;margin-bottom:20px;line-height:1.5;">Fill in your details and our AI agent will call you within seconds — experience exactly what your candidates go through.</p>
-          <form class="demo-form" onsubmit="handleDemoCall(event)">
-            <div class="demo-form-row">
-              <input class="demo-input" type="text" placeholder="Your first name" required />
-              <input class="demo-input" type="tel" placeholder="Phone number (+421...)" required />
-            </div>
-            <select class="demo-input demo-select" required>
-              <option value="" disabled selected>Select a position to be screened for</option>
-              <option>Software Engineer</option>
-              <option>HR Manager</option>
-              <option>Sales Representative</option>
-              <option>Product Manager</option>
-              <option>Marketing Specialist</option>
-              <option>Customer Support Agent</option>
-            </select>
-            <button class="demo-call-btn" type="submit">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.73 5.73l1.44-1.44a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Let AI call me now
-            </button>
-          </form>
-          <div id="demo-success" style="display:none;text-align:center;padding:20px 0;">
-            <div style="font-size:32px;margin-bottom:12px;">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <p style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px;">AI is calling you!</p>
-            <p style="font-size:13px;color:#64748b;">Pick up — your screening interview is starting now.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- ═══ SOURCING AGENT DEMO ══════════════════════════════════════ -->
 <section style="background:#f5f5f5;padding:100px 48px;">
