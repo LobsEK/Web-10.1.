@@ -1737,145 +1737,373 @@
   }
 </script>
 
-<!-- ═══ FLOATING AI BUBBLE ══════════════════════════════════════ -->
-<div id="ai-bubble-wrap">
+<!-- ═══ MASCOT AI WIDGET — MAIN PAGE ════════════════════════════ -->
+<div id="msc-wrap" class="msc-state-idle">
 
-  <div id="ai-bubble-menu" aria-hidden="true">
+  <div id="msc-greeting">👋 Môžem ti pomôcť?</div>
 
-    <a href="https://auth.instaview.sk/u/login?state=hKFo2SAyejFVMTVfRXM2ZDJtcjJnUjFLSV9hSDVmdXFJNEZUdKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDdVU2tvRGJpdTRNZlhTWkQ4S2V1Y3BXRUFBT3MtM192o2NpZNkgYjdEVm5EblNnYks1dEdSR3AwOWFhd1Bvc1FUemJoM1c" target="_blank" class="ai-bubble-option">
-      <div class="ai-bubble-opt-icon" style="background:#f0fdf4; color:#16a34a;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <div id="msc-panel">
+    <div class="msc-ph">
+      <div class="msc-ph-avatar">
+        <svg viewBox="0 0 100 122" width="26" height="32"><defs><linearGradient id="mhg" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#a5b4fc"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs><ellipse cx="11" cy="63" rx="13" ry="8" fill="url(#mhg)" transform="rotate(-22 11 63)"/><ellipse cx="89" cy="63" rx="13" ry="8" fill="url(#mhg)" transform="rotate(22 89 63)"/><rect x="17" y="15" width="66" height="74" rx="21" fill="url(#mhg)"/><rect x="26" y="82" width="18" height="24" rx="9" fill="url(#mhg)"/><rect x="56" y="82" width="18" height="24" rx="9" fill="url(#mhg)"/><ellipse cx="37" cy="57" rx="5" ry="7" fill="rgba(255,255,255,.8)"/><path d="M52,56 Q62,49 72,56" stroke="rgba(255,255,255,.8)" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
       </div>
-      <div class="ai-bubble-opt-text">
-        <div class="ai-bubble-opt-title">AI ti zavolá</div>
-        <div class="ai-bubble-opt-sub">Zažij screening naživo za 60 sek</div>
+      <div>
+        <div class="msc-ph-name">InstaView AI</div>
+        <div class="msc-ph-sub"><span class="msc-ph-dot"></span>Online · vždy tu</div>
       </div>
-    </a>
-
-    <a href="https://auth.instaview.sk/u/login?state=hKFo2SAyejFVMTVfRXM2ZDJtcjJnUjFLSV9hSDVmdXFJNEZUdKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDdVU2tvRGJpdTRNZlhTWkQ4S2V1Y3BXRUFBT3MtM192o2NpZNkgYjdEVm5EblNnYks1dEdSR3AwOWFhd1Bvc1FUemJoM1c" target="_blank" class="ai-bubble-option">
-      <div class="ai-bubble-opt-icon" style="background:#eff6ff; color:#2563eb;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <div class="ai-bubble-opt-text">
-        <div class="ai-bubble-opt-title">Chat s AI</div>
-        <div class="ai-bubble-opt-sub">Opýtaj sa čokoľvek okamžite</div>
-      </div>
-    </a>
-
+      <button class="msc-ph-close" onclick="mscClose()" aria-label="Zavrieť">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="msc-msgs" id="msc-msgs">
+      <div class="msc-msg-ai"><div class="msc-bubble">Ahoj! 👋 Som AI od InstaView. Môžem ti povedať viac o tom, ako automatizujeme nábor a HR procesy. Na čo sa chceš opýtať?</div></div>
+    </div>
+    <div class="msc-quick-wrap" id="msc-quick-wrap">
+      <button class="msc-quick-btn" onclick="mscQuick('Ako funguje AI screening?')">Ako funguje AI screening?</button>
+      <button class="msc-quick-btn" onclick="mscQuick('Koľko to stojí?')">Koľko to stojí?</button>
+      <button class="msc-quick-btn" onclick="mscQuick('Chcem demo')">Chcem demo</button>
+    </div>
+    <form class="msc-input-row" onsubmit="mscSend(event)">
+      <input class="msc-input" id="msc-input" type="text" placeholder="Napíš správu…" autocomplete="off"/>
+      <button class="msc-send-btn" type="submit" aria-label="Odoslať">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
   </div>
 
-  <button id="ai-bubble-btn" onclick="toggleAiBubble()" aria-label="Vyskúšaj AI">
-    <span id="ai-bubble-icon-open">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/>
-        <path d="M19 15l.75 2.25L22 18l-2.25.75L19 21l-.75-2.25L16 18l2.25-.75L19 15z"/>
-      </svg>
-    </span>
-    <span id="ai-bubble-icon-close" style="display:none;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </span>
-    <span id="ai-bubble-pulse"></span>
-  </button>
+  <div id="msc-char" onclick="mscToggle()">
+    <div id="msc-dots"><span></span><span></span><span></span></div>
+    <svg viewBox="0 0 100 122" width="80" height="98" style="display:block;overflow:visible;">
+  <defs>
+    <linearGradient id="mbody" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#5b9ffa"/>
+      <stop offset="100%" stop-color="#1a6ef5"/>
+    </linearGradient>
+    <linearGradient id="marm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d82ef"/>
+      <stop offset="100%" stop-color="#1258d8"/>
+    </linearGradient>
+  </defs>
+  <!-- Shadow -->
+  <ellipse cx="50" cy="119" rx="22" ry="5" fill="rgba(26,100,245,.18)"/>
+  <!-- Left arm -->
+  <ellipse cx="11" cy="63" rx="13" ry="8" fill="url(#marm)" transform="rotate(-22 11 63)"/>
+  <!-- Right arm -->
+  <ellipse cx="89" cy="63" rx="13" ry="8" fill="url(#marm)" transform="rotate(22 89 63)"/>
+  <!-- Body -->
+  <rect x="17" y="15" width="66" height="74" rx="21" fill="url(#mbody)"/>
+  <!-- Highlight -->
+  <ellipse cx="30" cy="27" rx="10" ry="6" fill="rgba(255,255,255,.22)" transform="rotate(-25 30 27)"/>
+  <!-- Left leg -->
+  <rect x="26" y="82" width="18" height="24" rx="9" fill="url(#marm)"/>
+  <!-- Right leg -->
+  <rect x="56" y="82" width="18" height="24" rx="9" fill="url(#marm)"/>
+  <!-- IDLE face -->
+  <g id="msc-idle-face">
+    <ellipse cx="37" cy="57" rx="5.5" ry="8" fill="#1a2744"/>
+    <path d="M 52 56 Q 62 48 72 56" stroke="#1a2744" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- THINKING face -->
+  <g id="msc-think-face" style="display:none;">
+    <path d="M 37 47 A 10 10 0 1 1 27 57" stroke="#1a2744" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <polyline points="37,47 32,42 41,42" stroke="#1a2744" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 63 47 A 10 10 0 1 1 53 57" stroke="#1a2744" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <polyline points="63,47 58,42 67,42" stroke="#1a2744" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Mouth (talking) -->
+  <ellipse id="msc-mouth" cx="50" cy="71" rx="9" ry="5.5" fill="#1a2744" style="display:none;"/>
+</svg>
+  </div>
 
 </div>
-
 <style>
-  #ai-bubble-wrap {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
-  }
-  #ai-bubble-btn {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px rgba(99,102,241,.45);
-    position: relative;
-    transition: transform .2s, box-shadow .2s;
-    flex-shrink: 0;
-  }
-  #ai-bubble-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(99,102,241,.55); }
-  #ai-bubble-btn:active { transform: scale(.97); }
-  #ai-bubble-pulse {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 2px solid rgba(99,102,241,.4);
-    animation: bubble-pulse 2s ease-out infinite;
-  }
-  @keyframes bubble-pulse {
-    0%   { transform: scale(1);    opacity: 1; }
-    100% { transform: scale(1.45); opacity: 0; }
-  }
-  #ai-bubble-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(12px) scale(.96);
-    transition: opacity .22s ease, transform .22s ease;
-  }
-  #ai-bubble-menu.open {
-    pointer-events: auto;
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  .ai-bubble-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 13px 16px;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,.1);
-    transition: transform .15s, box-shadow .15s;
-    min-width: 230px;
-  }
-  .ai-bubble-option:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.13); }
-  .ai-bubble-opt-icon {
-    width: 38px; height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .ai-bubble-opt-title { font-size: 13.5px; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
-  .ai-bubble-opt-sub { font-size: 11.5px; color: #64748b; line-height: 1.4; }
-</style>
+/* ── Mascot Widget ─────────────────────────────────── */
+#msc-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+#msc-char {
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  animation: msc-float 3s ease-in-out infinite;
+  transition: transform .15s;
+}
+#msc-char:active { transform: scale(.93); }
+@keyframes msc-float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+.msc-state-thinking #msc-char {
+  animation: msc-wobble .5s ease-in-out infinite !important;
+}
+@keyframes msc-wobble {
+  0%,100% { transform: rotate(0deg); }
+  25%     { transform: rotate(-4deg); }
+  75%     { transform: rotate(4deg); }
+}
+.msc-state-talking #msc-char {
+  animation: msc-bounce .35s ease-in-out infinite !important;
+}
+@keyframes msc-bounce {
+  0%,100% { transform: scaleY(1); }
+  50%     { transform: scaleY(1.06); }
+}
 
+/* Thinking dots */
+#msc-dots {
+  display: none;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 2px;
+}
+.msc-state-thinking #msc-dots { display: flex; }
+#msc-dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #6366f1;
+  animation: msc-dot-bounce .7s ease-in-out infinite;
+}
+#msc-dots span:nth-child(2) { animation-delay: .15s; }
+#msc-dots span:nth-child(3) { animation-delay: .3s; }
+@keyframes msc-dot-bounce {
+  0%,100% { transform: translateY(0); opacity:.5; }
+  50%     { transform: translateY(-6px); opacity:1; }
+}
+
+/* Greeting tooltip */
+#msc-greeting {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px 12px 4px 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(.85) translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
+  pointer-events: none;
+}
+#msc-greeting.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Panel */
+#msc-panel {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.14);
+  width: 310px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(12px) scale(.96);
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+}
+#msc-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.msc-ph {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg,#6366f1,#4f46e5);
+}
+.msc-ph-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.msc-ph-name { font-size: 13px; font-weight: 700; color: #fff; }
+.msc-ph-sub { font-size: 11px; color: rgba(255,255,255,.8); display:flex; align-items:center; gap:5px; margin-top:1px; }
+.msc-ph-dot { width:6px;height:6px;border-radius:50%;background:#4ade80;animation:msc-blink 1.4s ease-in-out infinite; }
+@keyframes msc-blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.msc-ph-close { margin-left:auto; background:none; border:none; cursor:pointer; padding:4px; display:flex; opacity:.75; }
+.msc-ph-close:hover { opacity:1; }
+
+.msc-msgs {
+  flex:1; max-height:220px; overflow-y:auto;
+  padding: 14px 14px 8px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.msc-msg-ai, .msc-msg-user { display: flex; }
+.msc-msg-ai { justify-content: flex-start; }
+.msc-msg-user { justify-content: flex-end; }
+.msc-bubble {
+  max-width: 85%; padding: 9px 13px;
+  border-radius: 14px; font-size: 13px; line-height: 1.5;
+}
+.msc-msg-ai .msc-bubble { background:#f1f5f9; color:#0f172a; border-bottom-left-radius:4px; }
+.msc-msg-user .msc-bubble { background:linear-gradient(135deg,#6366f1,#4f46e5); color:#fff; border-bottom-right-radius:4px; }
+
+.msc-quick-wrap {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 0 14px 10px;
+}
+.msc-quick-btn {
+  font-size:11.5px; font-weight:600; color:#6366f1;
+  background:#eff1fe; border:1px solid #c7d2fe;
+  border-radius:100px; padding:5px 11px;
+  cursor:pointer; font-family:inherit;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.msc-quick-btn:hover { background:#e0e7ff; }
+
+.msc-input-row {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 12px; border-top:1px solid #f1f5f9;
+}
+.msc-input {
+  flex:1; border:1px solid #e2e8f0; border-radius:100px;
+  padding:8px 14px; font-size:13px; font-family:inherit;
+  outline:none; color:#0f172a;
+  transition: border-color .15s;
+}
+.msc-input:focus { border-color:#6366f1; }
+.msc-send-btn {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
+  border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; transition:opacity .15s;
+}
+.msc-send-btn:hover { opacity:.85; }
+
+/* Periodic spin (torque) */
+.msc-state-idle.msc-spinning #msc-char {
+  animation: msc-spin-torque .7s cubic-bezier(.4,0,.2,1) !important;
+}
+@keyframes msc-spin-torque {
+  0%   { transform: translateY(0) rotateY(0deg) scale(1); }
+  40%  { transform: translateY(-8px) rotateY(180deg) scale(.85); }
+  100% { transform: translateY(0) rotateY(360deg) scale(1); }
+}
+</style>
 <script>
-  function toggleAiBubble() {
-    const menu = document.getElementById('ai-bubble-menu');
-    const iconOpen = document.getElementById('ai-bubble-icon-open');
-    const iconClose = document.getElementById('ai-bubble-icon-close');
-    const isOpen = menu.classList.toggle('open');
-    iconOpen.style.display = isOpen ? 'none' : '';
-    iconClose.style.display = isOpen ? '' : 'none';
-    menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+(function() {
+  const aiReplies = {
+    'ako funguje ai screening?': 'AI agent zavolá kandidátovi, vedie štruktúrovaný rozhovor a okamžite vygeneruje hodnotenie. Celý proces trvá 10–15 minút bez účasti recruitera. 🤖',
+    'koľko to stojí?': 'Ceny závisí od počtu pozícií a rozsahu. Pozri sekciu Pricing alebo nás kontaktuj na info@instaview.sk — radi pripravíme ponuku na mieru. 💬',
+    'chcem demo': 'Super! Prejdi na HR stránku kde ti AI zavolá naživo. Alebo nás kontaktuj a dohodneme si demo call. 🚀',
+  };
+
+  let panelOpen = false;
+  let state = 'idle';
+
+  function setState(s) {
+    state = s;
+    const wrap = document.getElementById('msc-wrap');
+    wrap.className = 'msc-state-' + s;
+    const idleFace = document.getElementById('msc-idle-face');
+    const thinkFace = document.getElementById('msc-think-face');
+    const mouth = document.getElementById('msc-mouth');
+    if (idleFace) idleFace.style.display = (s === 'thinking') ? 'none' : '';
+    if (thinkFace) thinkFace.style.display = (s === 'thinking') ? '' : 'none';
+    if (mouth) mouth.style.display = (s === 'talking') ? '' : 'none';
   }
-  document.addEventListener('click', function(e) {
-    const wrap = document.getElementById('ai-bubble-wrap');
-    if (!wrap.contains(e.target)) {
-      document.getElementById('ai-bubble-menu').classList.remove('open');
-      document.getElementById('ai-bubble-icon-open').style.display = '';
-      document.getElementById('ai-bubble-icon-close').style.display = 'none';
+
+  window.mscToggle = function() {
+    panelOpen ? mscClose() : mscOpen();
+  };
+
+  function mscOpen() {
+    panelOpen = true;
+    document.getElementById('msc-panel').classList.add('open');
+    document.getElementById('msc-greeting').classList.remove('show');
+    setState('talking');
+    setTimeout(() => setState('idle'), 1200);
+  }
+
+  window.mscClose = function() {
+    panelOpen = false;
+    document.getElementById('msc-panel').classList.remove('open');
+    setState('idle');
+  };
+
+  window.mscQuick = function(text) {
+    document.getElementById('msc-quick-wrap').style.display = 'none';
+    addMsg(text, 'user');
+    setState('thinking');
+    setTimeout(() => {
+      const reply = aiReplies[text.toLowerCase()] || 'Dobrá otázka! Kontaktuj nás na info@instaview.sk a radi odpovieme. 😊';
+      addMsg(reply, 'ai');
+      setState('talking');
+      setTimeout(() => setState('idle'), 2000);
+    }, 1000);
+  };
+
+  window.mscSend = function(e) {
+    e.preventDefault();
+    const inp = document.getElementById('msc-input');
+    const val = inp.value.trim();
+    if (!val) return;
+    document.getElementById('msc-quick-wrap').style.display = 'none';
+    addMsg(val, 'user');
+    inp.value = '';
+    setState('thinking');
+    setTimeout(() => {
+      const key = val.toLowerCase();
+      const reply = aiReplies[key] || 'Ďakujem za správu! Pre podrobnejšie info nás kontaktuj na info@instaview.sk. 😊';
+      addMsg(reply, 'ai');
+      setState('talking');
+      setTimeout(() => setState('idle'), 2000);
+    }, 1000);
+  };
+
+  function addMsg(text, who) {
+    const msgs = document.getElementById('msc-msgs');
+    const d = document.createElement('div');
+    d.className = 'msc-msg-' + who;
+    d.innerHTML = '<div class="msc-bubble">' + text + '</div>';
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  // Greeting on load
+  setTimeout(() => {
+    const g = document.getElementById('msc-greeting');
+    if (g) {
+      g.classList.add('show');
+      g.onclick = mscOpen;
+      setTimeout(() => g.classList.remove('show'), 6000);
     }
+  }, 1800);
+
+
+  // Periodic torque spin every 6s when idle
+  setInterval(function() {
+    var wrap = document.getElementById('msc-wrap');
+    if (wrap && wrap.className.indexOf('msc-state-idle') !== -1) {
+      wrap.classList.add('msc-spinning');
+      setTimeout(function() { wrap.classList.remove('msc-spinning'); }, 700);
+    }
+  }, 6000);
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('msc-wrap');
+    if (wrap && !wrap.contains(e.target) && panelOpen) mscClose();
   });
+})();
 </script>
 </body>
 </html>
