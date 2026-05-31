@@ -2308,7 +2308,7 @@
     (function loop() {
       cx += (tx - cx) * 0.08;
       cy += (ty - cy) * 0.08;
-      if (eyesEl) eyesEl.style.transform = "translate(" + (cx*5) + "px," + (cy*4) + "px)";
+      if (eyesEl) eyesEl.style.transform = "translate(" + (cx*2) + "px," + (cy*1.5) + "px)";
       requestAnimationFrame(loop);
     })();
   })();
