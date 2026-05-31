@@ -2917,23 +2917,34 @@
     <div id="msc-dots"><span></span><span></span><span></span></div>
     <div class="agent-container">
     <div class="agent-floor-shadow"></div>
-    <div class="agent-3d">
+    <div class="agent-3d" id="msc-agent">
       <div class="agent-arm left"></div>
       <div class="agent-arm right"></div>
       <div class="agent-leg left"></div>
       <div class="agent-leg right"></div>
       <div class="agent-body">
-        <div class="agent-eyes">
-          <div class="agent-eye oval"></div>
-          <div class="agent-eye wink">
-            <svg viewBox="0 0 100 60" width="100%" height="100%" style="overflow:visible;">
-              <path d="M 5 50 Q 50 -15 95 50" fill="none" stroke="#121C2D" stroke-width="24" stroke-linecap="round"/>
-            </svg>
+        <div class="agent-eyes" id="msc-agent-eyes">
+          <div class="agent-eye" data-eye="left">
+            <div class="eye-open"></div>
+            <div class="eye-wink">
+              <svg viewBox="0 0 100 60" width="100%" height="100%" style="overflow:visible;">
+                <path d="M 5 50 Q 50 -15 95 50" fill="none" stroke="#121C2D" stroke-width="24" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="agent-eye" data-eye="right">
+            <div class="eye-open"></div>
+            <div class="eye-wink">
+              <svg viewBox="0 0 100 60" width="100%" height="100%" style="overflow:visible;">
+                <path d="M 5 50 Q 50 -15 95 50" fill="none" stroke="#121C2D" stroke-width="24" stroke-linecap="round"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
   
   
   
@@ -3116,11 +3127,12 @@
 
 
 
-/* ── LOBI/KUBI 3D Agent Widget (60% scale) ──────────── */
+
+/* ── LOBI/KUBI 3D Agent Widget (55 % scale) ─────────── */
 .agent-container {
   position: relative;
   width: 140px;
-  height: 160px;
+  height: 158px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3130,23 +3142,25 @@
 }
 
 @keyframes floatAgent {
-  0%,100% { transform: translateY(0px); }
+  0%,100% { transform: translateY(0); }
   50%      { transform: translateY(-12px); }
 }
 @keyframes floatShadow {
-  0%,100% { transform: scale(1);   opacity: 0.15; }
-  50%      { transform: scale(0.8); opacity: 0.08; }
+  0%,100% { transform: scale(1);   opacity: .18; }
+  50%      { transform: scale(.8); opacity: .09; }
 }
+@keyframes waveLeft  { 0%,100%{transform:rotate(32deg);} 50%{transform:rotate(38deg);} }
+@keyframes waveRight { 0%,100%{transform:rotate(50deg);} 50%{transform:rotate(56deg);} }
 
 .agent-3d {
   position: relative;
-  width: 114px;
-  height: 114px;
+  width: 110px;
+  height: 110px;
   animation: floatAgent 3.5s ease-in-out infinite;
   z-index: 2;
 }
 
-/* Torque spin */
+/* Torque */
 .msc-state-idle.msc-spinning .agent-3d {
   animation: agentTorque .8s cubic-bezier(.4,0,.2,1) !important;
 }
@@ -3155,153 +3169,171 @@
   45%  { transform: rotateY(180deg) scale(.82); }
   100% { transform: rotateY(360deg) scale(1); }
 }
-/* Thinking wobble */
 .msc-state-thinking .agent-3d {
   animation: agentWobble .55s ease-in-out infinite !important;
 }
 @keyframes agentWobble {
-  0%,100% { transform: rotate(0);    }
-  25%     { transform: rotate(-6deg); }
-  75%     { transform: rotate(6deg);  }
+  0%,100%{transform:rotate(0);}
+  25%{transform:rotate(-6deg);}
+  75%{transform:rotate(6deg);}
 }
-/* Talking bounce */
 .msc-state-talking .agent-3d {
   animation: agentBounce .4s ease-in-out infinite !important;
 }
 @keyframes agentBounce {
-  0%,100% { transform: scaleY(1);    }
-  50%     { transform: scaleY(1.07); }
+  0%,100%{transform:scaleY(1);}
+  50%{transform:scaleY(1.07);}
 }
 
 /* Floor shadow */
 .agent-floor-shadow {
   position: absolute;
-  bottom: 20px;
-  width: 96px;
-  height: 12px;
-  background: #0F172A;
+  bottom: 22px;
+  width: 99px;
+  height: 13px;
+  background: #1e3a8a;
   border-radius: 50%;
+  filter: blur(3px);
   animation: floatShadow 3.5s ease-in-out infinite;
   z-index: 1;
 }
 
-/* Body — full 3D plastic effect */
+/* Body */
 .agent-body {
   position: absolute;
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, #2E8CFF 0%, #0056FF 100%);
-  border-radius: 30px;
+  inset: 0;
+  background: linear-gradient(150deg, #3a8bff 0%, #1f78ff 45%, #0c54d8 100%);
+  border-radius: 31px;
   box-shadow:
-    inset 7px   7px  15px rgba(255,255,255,0.40),
-    inset -9px -9px  18px rgba(0,30,120,0.50),
-    inset 2px   2px   4px rgba(255,255,255,0.90),
-    inset -2px -2px   4px rgba(0,20,80,0.60),
-    0 9px 15px rgba(0,86,255,0.25);
+    inset 8px  9px 17px rgba(255,255,255,.35),
+    inset -10px -10px 20px rgba(0,30,120,.45),
+    inset 2px  2px  4px rgba(255,255,255,.85),
+    inset -2px -2px 4px rgba(0,20,80,.5),
+    0 10px 17px rgba(15,84,216,.28);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
 }
-
-/* Arms & legs — same 3D gradient */
-.agent-arm, .agent-leg {
+.agent-body::before {
+  content: "";
   position: absolute;
-  background: linear-gradient(135deg, #2E8CFF, #0056FF);
-  border-radius: 24px;
+  top: 6px; left: 10px;
+  width: 72px; height: 33px;
+  background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(255,255,255,0));
+  border-radius: 50% 50% 60% 40% / 70% 60% 40% 30%;
+  filter: blur(1px);
+  pointer-events: none;
+}
+/* Mouth when talking */
+.msc-state-talking .agent-body::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 50%; transform: translateX(-50%);
+  width: 30px; height: 14px;
+  background: #121C2D;
+  border-radius: 0 0 15px 15px;
+  animation: agentMouth .4s ease-in-out infinite alternate;
+}
+@keyframes agentMouth { 0%{height:8px;} 100%{height:16px;} }
+
+/* Arms */
+.agent-arm {
+  position: absolute;
+  top: 51px;
+  width: 53px;
+  height: 21px;
+  background: linear-gradient(160deg, #3a8bff, #0f56d8);
+  border-radius: 999px;
   z-index: 1;
   box-shadow:
-    inset 3px  3px  7px rgba(255,255,255,0.40),
-    inset -4px -4px 7px rgba(0,30,120,0.50);
-}
-
-.agent-arm {
-  top: 39px;
-  width: 21px;
-  height: 45px;
+    inset 3px 3px 7px rgba(255,255,255,.35),
+    inset -3px -3px 7px rgba(0,30,120,.45);
 }
 .agent-arm.left {
-  left: -12px;
-  transform-origin: bottom right;
-  transform: rotate(-60deg);
+  left: -40px;
+  transform-origin: right center;
+  transform: rotate(32deg);
+  animation: waveLeft 3.6s ease-in-out infinite;
 }
 .agent-arm.right {
-  right: -12px;
-  transform-origin: bottom left;
-  transform: rotate(60deg);
+  right: -40px;
+  transform-origin: left center;
+  transform: rotate(50deg);
+  animation: waveRight 3.2s ease-in-out infinite;
 }
 
+/* Legs */
 .agent-leg {
-  bottom: -13px;
-  width: 22px;
-  height: 30px;
+  position: absolute;
+  bottom: -23px;
+  width: 19px;
+  height: 39px;
+  background: linear-gradient(160deg, #3a8bff, #0f56d8);
+  border-radius: 40% 40% 50% 50% / 24% 24% 76% 76%;
+  z-index: 1;
+  box-shadow:
+    inset 3px 3px 6px rgba(255,255,255,.30),
+    inset -3px -3px 6px rgba(0,30,120,.45);
 }
-.agent-leg.left  { left: 27px; }
-.agent-leg.right { right: 27px; }
+.agent-leg.left  { left: 28px;  transform: rotate(-8deg); }
+.agent-leg.right { right: 28px; transform: rotate(8deg); }
 
 /* Eyes */
 .agent-eyes {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 23px;
+  gap: 22px;
   margin-top: -6px;
+  transition: transform .12s ease-out;
 }
-
-.agent-eye.oval {
-  width: 20px;
-  height: 33px;
-  background: #121C2D;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  flex-shrink: 0;
-  transition: all .25s;
-}
-
-.agent-eye.wink {
-  width: 29px;
-  height: 18px;
+.agent-eye {
+  position: relative;
+  width: 19px;
+  height: 31px;
   display: flex;
   align-items: center;
-  margin-top: 3px;
-  flex-shrink: 0;
+  justify-content: center;
 }
+.eye-open {
+  width: 19px;
+  height: 31px;
+  background: #121C2D;
+  border-radius: 50% / 55%;
+  position: relative;
+  transition: opacity .08s linear;
+}
+.eye-open::after {
+  content: "";
+  position: absolute;
+  top: 5px; left: 4px;
+  width: 5px; height: 5px;
+  background: rgba(120,150,210,.7);
+  border-radius: 50%;
+}
+.eye-wink {
+  position: absolute;
+  width: 28px;
+  height: 18px;
+  opacity: 0;
+  transition: opacity .08s linear;
+}
+.agent-eye.winking .eye-open { opacity: 0; }
+.agent-eye.winking .eye-wink { opacity: 1; }
 
-/* Thinking — spinner eyes */
-.msc-state-thinking .agent-eye.oval {
+/* Thinking state — spinner eyes */
+.msc-state-thinking .eye-open {
   background: transparent !important;
   border: 3px solid #121C2D;
   border-top-color: transparent;
-  border-radius: 50%;
-  width: 22px; height: 22px;
+  border-radius: 50% !important;
+  width: 20px; height: 20px;
   animation: agentSpinEye .6s linear infinite !important;
 }
-.msc-state-thinking .agent-eye.wink {
-  width: 22px; height: 22px; margin-top: 0;
-  border: 3px solid #121C2D;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: agentSpinEye .6s linear infinite reverse !important;
-}
-.msc-state-thinking .agent-eye.wink svg { display: none; }
+.msc-state-thinking .eye-wink { display: none !important; }
 @keyframes agentSpinEye { to { transform: rotate(360deg); } }
-
-/* Mouth */
-.agent-mouth {
-  display: none;
-  width: 34px; height: 0;
-  background: #121C2D;
-  border-radius: 0 0 17px 17px;
-  overflow: hidden;
-  transition: height .2s;
-  position: absolute;
-  bottom: 28px;
-  left: 50%; transform: translateX(-50%);
-}
-.msc-state-talking .agent-mouth {
-  display: block;
-  height: 14px;
-  animation: agentMouth .4s ease-in-out infinite alternate;
-}
-@keyframes agentMouth { 0%{height:8px} 100%{height:16px} }
 
 </style>
 <script>
