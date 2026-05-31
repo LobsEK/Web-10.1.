@@ -1971,126 +1971,166 @@
   100% { transform: translateY(0) rotateY(360deg) scale(1); }
 }
 
-/* ── Kubi Character ─────────────────────────── */
+
+/* ── Kubi Widget Character (scaled 50% from original) ──── */
 .kubi-agent-wrapper {
   position: relative;
-  width: 90px; height: 104px;
+  width: 110px;
+  height: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   cursor: pointer;
-  perspective: 500px;
+  perspective: 600px;
 }
+
+/* Float */
+@keyframes floatAgent {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes floatShadow {
+  0%,100% { transform: scale(1);   opacity: 0.45; }
+  50%     { transform: scale(0.8); opacity: 0.18; }
+}
+
 .kubi-agent {
   position: relative;
-  width: 74px; height: 74px;
+  width: 90px;
+  height: 90px;
   animation: floatAgent 4s ease-in-out infinite;
   z-index: 2;
 }
-/* Float */
-@keyframes floatAgent {
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-13px); }
-}
-/* Torque spin */
+
+/* Torque spin every 6 s */
 .msc-state-idle.msc-spinning .kubi-agent {
-  animation: kubiTorque .75s cubic-bezier(.4,0,.2,1) !important;
+  animation: kubiTorque .8s cubic-bezier(.4,0,.2,1) !important;
 }
 @keyframes kubiTorque {
-  0%   { transform: translateY(0) rotateY(0deg) scale(1); }
+  0%   { transform: translateY(0)    rotateY(0deg)   scale(1); }
   45%  { transform: translateY(-12px) rotateY(180deg) scale(.82); }
-  100% { transform: translateY(0) rotateY(360deg) scale(1); }
+  100% { transform: translateY(0)    rotateY(360deg) scale(1); }
 }
+
 /* Thinking wobble */
 .msc-state-thinking .kubi-agent {
   animation: kubiWobble .55s ease-in-out infinite !important;
 }
 @keyframes kubiWobble {
-  0%,100% { transform: rotate(0deg); }
+  0%,100% { transform: rotate(0deg);  }
   25%     { transform: rotate(-5deg); }
-  75%     { transform: rotate(5deg); }
+  75%     { transform: rotate(5deg);  }
 }
+
 /* Talking bounce */
 .msc-state-talking .kubi-agent {
-  animation: kubiBounce .38s ease-in-out infinite !important;
+  animation: kubiBounce .4s ease-in-out infinite !important;
 }
 @keyframes kubiBounce {
-  0%,100% { transform: scaleY(1); }
+  0%,100% { transform: scaleY(1);    }
   50%     { transform: scaleY(1.08); }
 }
+
 /* Shadow */
 .kubi-shadow {
   position: absolute;
-  bottom: 7px;
-  width: 54px; height: 8px;
-  background: rgba(0,0,0,.18);
+  bottom: 15px;
+  width: 65px;
+  height: 9px;
+  background: #cbd5e1;
   border-radius: 50%;
   animation: floatShadow 4s ease-in-out infinite;
   z-index: 1;
 }
-@keyframes floatShadow {
-  0%,100% { transform: scale(1); opacity: .45; }
-  50%     { transform: scale(.78); opacity: .17; }
-}
-/* Body */
+
+/* Body — same inset as original, just 50% scale */
 .kubi-body {
-  position: absolute; top:0; left:0;
-  width:100%; height:100%;
-  background: #2563EB;
-  border-radius: 20px;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #2563EB;
+  border-radius: 25px;
   box-shadow:
-    inset 4px 4px 0 0 rgba(255,255,255,.45),
-    inset -5px -5px 0 0 rgba(0,30,100,.3);
+    inset 4px  4px  0px 0px rgba(255,255,255,0.45),
+    inset -5px -5px 0px 0px rgba(0,30,100,0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   z-index: 10;
 }
+
 /* Arms & legs */
 .kubi-arm, .kubi-leg {
   position: absolute;
-  background: #1D4ED8;
-  border-radius: 10px;
+  background-color: #1D4ED8;
+  border-radius: 12px;
   z-index: 1;
 }
-.kubi-arm { top: 18px; width: 14px; height: 30px; }
-.kubi-arm.left  { left: -7px; transform-origin: top center; transform: rotate(35deg); }
-.kubi-arm.right { right:-7px; transform-origin: top center; transform: rotate(-35deg); }
-.kubi-leg { bottom: -13px; width: 14px; height: 22px; }
-.kubi-leg.left  { left: 12px; }
-.kubi-leg.right { right:12px; }
+
+.kubi-arm {
+  top: 25px;
+  width: 18px;
+  height: 38px;
+}
+.kubi-arm.left {
+  left: -9px;
+  transform-origin: top center;
+  transform: rotate(35deg);
+}
+.kubi-arm.right {
+  right: -9px;
+  transform-origin: top center;
+  transform: rotate(-35deg);
+}
+
+.kubi-leg {
+  bottom: -15px;
+  width: 19px;
+  height: 28px;
+}
+.kubi-leg.left  { left: 17px; }
+.kubi-leg.right { right: 17px; }
+
 /* Eyes */
 .kubi-eyes {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
+  gap: 16px;
 }
+
 .kubi-eye.oval {
-  width: 13px; height: 26px;
-  background: #0F172A;
+  width: 16px;
+  height: 30px;
+  background-color: #0F172A;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   transition: all .25s ease;
+  flex-shrink: 0;
 }
+
 .kubi-eye.wink {
-  width: 23px; height: 20px;
-  display: flex; align-items: center;
-  margin-top: -5px;
+  width: 28px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  margin-top: -6px;
+  flex-shrink: 0;
 }
-/* Thinking eyes → spinners */
+
+/* Thinking eyes → opposite-spin circles */
 .msc-state-thinking .kubi-eye.oval {
   background: transparent !important;
   border: 3px solid #0F172A;
   border-top-color: transparent;
   border-radius: 50%;
-  width: 19px; height: 19px;
+  width: 20px; height: 20px;
   animation: kubiSpinEye .65s linear infinite !important;
 }
 .msc-state-thinking .kubi-eye.wink {
-  width: 19px; height: 19px;
+  width: 20px; height: 20px;
   margin-top: 0;
   border: 3px solid #0F172A;
   border-top-color: transparent;
@@ -2098,24 +2138,23 @@
   animation: kubiSpinEye .65s linear infinite reverse !important;
 }
 .msc-state-thinking .kubi-eye.wink svg { display: none; }
-@keyframes kubiSpinEye {
-  to { transform: rotate(360deg); }
-}
+@keyframes kubiSpinEye { to { transform: rotate(360deg); } }
+
 /* Mouth */
 .kubi-mouth {
-  width: 24px; height: 0;
+  width: 28px; height: 0;
   background: #0F172A;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 14px 14px;
   overflow: hidden;
   transition: height .2s ease;
 }
 .msc-state-talking .kubi-mouth {
-  height: 12px;
+  height: 14px;
   animation: kubiMouth .4s ease-in-out infinite alternate;
 }
 @keyframes kubiMouth {
-  0%   { height: 7px; }
-  100% { height: 14px; }
+  0%   { height: 8px;  }
+  100% { height: 16px; }
 }
 
 </style>
