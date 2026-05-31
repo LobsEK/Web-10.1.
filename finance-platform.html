@@ -1773,27 +1773,28 @@
 
   <div id="msc-char" onclick="mscToggle()">
     <div id="msc-dots"><span></span><span></span><span></span></div>
-    
     <div class="kubi-agent-wrapper">
     <div class="kubi-shadow"></div>
     <div class="kubi-agent">
       <div class="kubi-arm left"></div>
       <div class="kubi-arm right"></div>
-      <div class="kubi-leg left"></div>
-      <div class="kubi-leg right"></div>
       <div class="kubi-body">
+        <div class="kubi-highlight"></div>
         <div class="kubi-eyes">
           <div class="kubi-eye oval"></div>
           <div class="kubi-eye wink">
-            <svg viewBox="0 0 100 50" width="100%" height="100%">
+            <svg viewBox="0 0 100 50" width="100%" height="100%" overflow="visible">
               <path d="M 10 40 Q 50 -15 90 40" fill="none" stroke="#0F172A" stroke-width="18" stroke-linecap="round"/>
             </svg>
           </div>
         </div>
         <div class="kubi-mouth"></div>
       </div>
+      <div class="kubi-leg left"></div>
+      <div class="kubi-leg right"></div>
     </div>
   </div>
+  
   
   </div>
 
@@ -1972,190 +1973,197 @@
 }
 
 
-/* ── Kubi Widget Character (scaled 50% from original) ──── */
+
+/* ── Kubi Widget ────────────────────────────────────── */
 .kubi-agent-wrapper {
   position: relative;
-  width: 110px;
-  height: 130px;
+  width: 130px;
+  height: 155px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   cursor: pointer;
-  perspective: 600px;
+  perspective: 700px;
 }
 
-/* Float */
 @keyframes floatAgent {
   0%,100% { transform: translateY(0px); }
-  50%      { transform: translateY(-10px); }
+  50%      { transform: translateY(-14px); }
 }
 @keyframes floatShadow {
-  0%,100% { transform: scale(1);   opacity: 0.45; }
-  50%     { transform: scale(0.8); opacity: 0.18; }
+  0%,100% { transform: translateX(-50%) scale(1);   opacity: 0.5; }
+  50%      { transform: translateX(-50%) scale(0.75); opacity: 0.2; }
 }
 
 .kubi-agent {
   position: relative;
-  width: 90px;
-  height: 90px;
-  animation: floatAgent 4s ease-in-out infinite;
+  width: 110px;
+  height: 110px;
+  animation: floatAgent 3.5s ease-in-out infinite;
   z-index: 2;
 }
 
-/* Torque spin every 6 s */
+/* Torque */
 .msc-state-idle.msc-spinning .kubi-agent {
   animation: kubiTorque .8s cubic-bezier(.4,0,.2,1) !important;
 }
 @keyframes kubiTorque {
-  0%   { transform: translateY(0)    rotateY(0deg)   scale(1); }
-  45%  { transform: translateY(-12px) rotateY(180deg) scale(.82); }
-  100% { transform: translateY(0)    rotateY(360deg) scale(1); }
+  0%   { transform: rotateY(0deg)   scale(1); }
+  45%  { transform: rotateY(180deg) scale(.82); }
+  100% { transform: rotateY(360deg) scale(1); }
 }
-
-/* Thinking wobble */
-.msc-state-thinking .kubi-agent {
-  animation: kubiWobble .55s ease-in-out infinite !important;
-}
+.msc-state-thinking .kubi-agent { animation: kubiWobble .6s ease-in-out infinite !important; }
 @keyframes kubiWobble {
-  0%,100% { transform: rotate(0deg);  }
-  25%     { transform: rotate(-5deg); }
-  75%     { transform: rotate(5deg);  }
+  0%,100% { transform: rotate(0);    }
+  25%     { transform: rotate(-6deg); }
+  75%     { transform: rotate(6deg);  }
 }
-
-/* Talking bounce */
-.msc-state-talking .kubi-agent {
-  animation: kubiBounce .4s ease-in-out infinite !important;
-}
+.msc-state-talking .kubi-agent { animation: kubiBounce .4s ease-in-out infinite !important; }
 @keyframes kubiBounce {
   0%,100% { transform: scaleY(1);    }
-  50%     { transform: scaleY(1.08); }
+  50%     { transform: scaleY(1.07); }
 }
 
 /* Shadow */
 .kubi-shadow {
   position: absolute;
-  bottom: 15px;
-  width: 65px;
-  height: 9px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 12px;
   background: #cbd5e1;
   border-radius: 50%;
-  animation: floatShadow 4s ease-in-out infinite;
+  animation: floatShadow 3.5s ease-in-out infinite;
   z-index: 1;
 }
 
-/* Body — same inset as original, just 50% scale */
+/* Arms — banana shape */
+.kubi-arm {
+  position: absolute;
+  top: 28px;
+  width: 26px;
+  height: 52px;
+  background: #1D4ED8;
+  z-index: 1;
+}
+.kubi-arm.left {
+  left: -14px;
+  border-radius: 40% 20% 50% 50%;
+  transform: rotate(30deg);
+  transform-origin: top center;
+}
+.kubi-arm.right {
+  right: -14px;
+  border-radius: 20% 40% 50% 50%;
+  transform: rotate(-30deg);
+  transform-origin: top center;
+}
+
+/* Body */
 .kubi-body {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: #2563EB;
-  border-radius: 25px;
+  background: #2563EB;
+  border-radius: 32px;
   box-shadow:
-    inset 4px  4px  0px 0px rgba(255,255,255,0.45),
-    inset -5px -5px 0px 0px rgba(0,30,100,0.3);
+    inset 6px  6px  0 0 rgba(255,255,255,0.45),
+    inset -7px -7px 0 0 rgba(0,30,100,0.30),
+    0 12px 28px rgba(29,78,216,0.45);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   z-index: 10;
+  overflow: hidden;
 }
 
-/* Arms & legs */
-.kubi-arm, .kubi-leg {
+/* Gloss highlight */
+.kubi-highlight {
   position: absolute;
-  background-color: #1D4ED8;
-  border-radius: 12px;
+  top: 8px; left: 10px;
+  width: 42px; height: 26px;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+
+/* Legs */
+.kubi-leg {
+  position: absolute;
+  bottom: -18px;
+  width: 26px;
+  height: 34px;
+  background: #1D4ED8;
+  border-radius: 13px 13px 10px 10px;
   z-index: 1;
 }
-
-.kubi-arm {
-  top: 25px;
-  width: 18px;
-  height: 38px;
-}
-.kubi-arm.left {
-  left: -9px;
-  transform-origin: top center;
-  transform: rotate(35deg);
-}
-.kubi-arm.right {
-  right: -9px;
-  transform-origin: top center;
-  transform: rotate(-35deg);
-}
-
-.kubi-leg {
-  bottom: -15px;
-  width: 19px;
-  height: 28px;
-}
-.kubi-leg.left  { left: 17px; }
-.kubi-leg.right { right: 17px; }
+.kubi-leg.left  { left: 20px; }
+.kubi-leg.right { right: 20px; }
 
 /* Eyes */
 .kubi-eyes {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
 }
-
 .kubi-eye.oval {
-  width: 16px;
-  height: 30px;
-  background-color: #0F172A;
+  width: 20px;
+  height: 38px;
+  background: #0F172A;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  transition: all .25s ease;
   flex-shrink: 0;
+  transition: all .25s;
 }
-
 .kubi-eye.wink {
-  width: 28px;
-  height: 25px;
+  width: 34px;
+  height: 28px;
   display: flex;
   align-items: center;
-  margin-top: -6px;
+  margin-top: -8px;
   flex-shrink: 0;
 }
 
-/* Thinking eyes → opposite-spin circles */
+/* Thinking eyes */
 .msc-state-thinking .kubi-eye.oval {
   background: transparent !important;
-  border: 3px solid #0F172A;
+  border: 3.5px solid #0F172A;
   border-top-color: transparent;
   border-radius: 50%;
-  width: 20px; height: 20px;
-  animation: kubiSpinEye .65s linear infinite !important;
+  width: 24px; height: 24px;
+  animation: kubiSpinEye .6s linear infinite !important;
 }
 .msc-state-thinking .kubi-eye.wink {
-  width: 20px; height: 20px;
-  margin-top: 0;
-  border: 3px solid #0F172A;
+  width: 24px; height: 24px; margin-top: 0;
+  border: 3.5px solid #0F172A;
   border-top-color: transparent;
   border-radius: 50%;
-  animation: kubiSpinEye .65s linear infinite reverse !important;
+  animation: kubiSpinEye .6s linear infinite reverse !important;
 }
 .msc-state-thinking .kubi-eye.wink svg { display: none; }
 @keyframes kubiSpinEye { to { transform: rotate(360deg); } }
 
 /* Mouth */
 .kubi-mouth {
-  width: 28px; height: 0;
+  width: 34px; height: 0;
   background: #0F172A;
-  border-radius: 0 0 14px 14px;
+  border-radius: 0 0 17px 17px;
   overflow: hidden;
-  transition: height .2s ease;
+  transition: height .2s;
+  position: relative; z-index: 2;
 }
 .msc-state-talking .kubi-mouth {
-  height: 14px;
+  height: 16px;
   animation: kubiMouth .4s ease-in-out infinite alternate;
 }
-@keyframes kubiMouth {
-  0%   { height: 8px;  }
-  100% { height: 16px; }
-}
+@keyframes kubiMouth { 0%{height:9px} 100%{height:18px} }
 
 </style>
 <script>
