@@ -227,6 +227,43 @@
       max-width: 640px;
       margin: 28px auto 0;
     }
+    /* Rotating hero slides */
+    .hero-rotator {
+      display: grid;
+      width: 100%;
+      justify-items: center;
+    }
+    .hero-slide {
+      grid-area: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .hero-slide.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      visibility: visible;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #6366f1;
+      background: #eef2ff;
+      border: 1px solid #e0e7ff;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-slide p strong { color: #0f172a; font-weight: 700; }
     .hero-btns {
       display: flex;
       gap: 12px;
@@ -612,8 +649,17 @@
 
 <!-- ═══ HERO ════════════════════════════════════════════════════ -->
 <section class="hero">
-  <h1>Hire faster with AI-powered recruitment workflows.</h1>
-  <p>Automate screening calls, online interviews, candidate sourcing, CV analysis, test screening, database reactivation, background checks, candidate support and company process analysis.</p>
+  <div class="hero-rotator">
+    <div class="hero-slide is-active" data-slide="0">
+      <h1>Hire faster with AI-powered recruitment workflows.</h1>
+      <p>Automate screening calls, online interviews, candidate sourcing, CV analysis, test screening, database reactivation, background checks, candidate support and company process analysis.</p>
+    </div>
+    <div class="hero-slide" data-slide="1">
+      <span class="hero-eyebrow">✦ Meet the Talent Sourcing Agent</span>
+      <h1>Find the right candidates before anyone else does.</h1>
+      <p>The Talent Sourcing Agent scans LinkedIn, GitHub, Xing and job boards 24/7 — building a ranked shortlist of people who truly fit and sending personalised outreach automatically. <strong>94% faster than a human recruiter.</strong></p>
+    </div>
+  </div>
   <div class="hero-btns">
     <a href="#agents" class="btn">Explore AI Agents</a>
     <a href="#contact" class="btn">Book a Demo</a>
@@ -3391,6 +3437,20 @@
     if (wrap && !wrap.contains(e.target) && panelOpen) mscClose();
   });
 })();
+</script>
+
+<!-- Rotating hero text -->
+<script>
+  (function() {
+    var slides = document.querySelectorAll('.hero-slide');
+    if (slides.length < 2) return;
+    var current = 0;
+    setInterval(function() {
+      slides[current].classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+    }, 12000);
+  })();
 </script>
 </body>
 </html>
